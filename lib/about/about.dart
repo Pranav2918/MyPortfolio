@@ -23,8 +23,8 @@ class _AboutState extends State<About> {
       height: Responsive.isDesktop(context) ? 450 : null,
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
-          horizontal: Responsive.isDesktop(context) ? 120 : 20),
-      child: Responsive.isDesktop(context) 
+          horizontal: Responsive.isDesktop(context) ? 100 : 20),
+      child: Responsive.isDesktop(context)
           ? _renderLargeScreenAboutSection()
           : _renderSmallScreenAboutSection(),
     );

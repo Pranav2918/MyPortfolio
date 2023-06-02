@@ -36,7 +36,7 @@ class Intro extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const AppText(
-                text: "Hello, I'm",
+                text: "Hey There! I'm",
                 color: Colors.black,
                 fontSize: 14,
               ),
@@ -91,7 +91,7 @@ class Intro extends StatelessWidget {
       children: [
         const SizedBox(height: 50.0),
         const AppText(
-          text: "Hello, I'm",
+          text: "Hey There! I'm",
           color: Colors.black,
           fontSize: 14,
         ),
