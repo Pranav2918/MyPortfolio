@@ -46,24 +46,25 @@ class Skills extends StatelessWidget {
                     },
                   ),
                 )
-              : Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    primary: false,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1 / 1,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 50,
-                    ),
-                    itemCount: skills.length,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (BuildContext context, int i) {
-                      return _skillCard(context, i);
-                    },
+              : SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: GridView.builder(
+                  // shrinkWrap: true,
+                  // primary: false,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 1,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 50,
                   ),
-                )
+                  itemCount: skills.length,
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (BuildContext context, int i) {
+                    return _skillCard(context, i);
+                  },
+                ),
+              )
         ],
       ),
     );
