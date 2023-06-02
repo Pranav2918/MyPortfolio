@@ -4,7 +4,9 @@ import 'package:pranavdave/headerSection/header.dart';
 import 'package:pranavdave/home/intro.dart';
 import 'package:pranavdave/projects/projects.dart';
 import 'package:pranavdave/skills/skills.dart';
+import 'package:pranavdave/utils/colors.dart';
 import 'package:pranavdave/utils/responsive.dart';
+import 'package:pranavdave/widgets/divider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 class Home extends StatefulWidget {
@@ -28,12 +30,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> drawerKey = GlobalKey<ScaffoldState>();
-
     return Scaffold(
-      key: drawerKey,
+      drawer: const Drawer(),
       backgroundColor: Colors.white,
-      drawer: Responsive.isDesktop(context) ? Container() : const Drawer(),
       body: SafeArea(
         child: Column(
           children: [
@@ -62,17 +61,45 @@ class _HomeState extends State<Home> {
                     controller: controller,
                     index: index,
                     child: index == 0
-                        ? const Intro()
+                        ? Column(
+                            children: const [Intro(), CustomDivider()],
+                          )
                         : index == 1
-                            ? const About()
+                            ? Column(
+                                children: const [About(), CustomDivider()],
+                              )
                             : index == 2
-                                ? const Skills()
+                                ? Column(
+                                    children: const [Skills(), CustomDivider()],
+                                  )
                                 : index == 3
-                                    ? const Projects()
-                                    : const Intro());
+                                    ? Column(
+                                        children: const [
+                                          Projects(),
+                                          CustomDivider()
+                                        ],
+                                      )
+                                    : Column(
+                                        children: const [
+                                          Intro(),
+                                          CustomDivider()
+                                        ],
+                                      ));
               }),
             ))
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _scrollToDesiredIndex(0);
+        },
+        child: Container(
+          height: 60,
+          width: 60,
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle, color: AppColors.primaryPurple),
+          child: const Icon(Icons.keyboard_arrow_up_rounded),
         ),
       ),
     );

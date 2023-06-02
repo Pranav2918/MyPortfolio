@@ -8,7 +8,7 @@ class Projects extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: size.height,
-      color: Colors.blue,
+      color: Colors.white,
     );
   }
 }

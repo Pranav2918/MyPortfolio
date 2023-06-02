@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pranavdave/utils/colors.dart';
 import 'package:pranavdave/widgets/appText.dart';
 
 import '../utils/responsive.dart';
@@ -20,10 +21,11 @@ class _HeaderSectionState extends State<HeaderSection> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      color: Colors.white,
       width: size.width,
-      height: 90,
+      height: 70,
       padding: EdgeInsets.symmetric(
-          horizontal: Responsive.isDesktop(context) ? 120 : 20),
+          horizontal: Responsive.isDesktop(context) ? 100 : 20),
       child: InkWell(
         onTap: widget.home,
         child: Row(
@@ -38,24 +40,46 @@ class _HeaderSectionState extends State<HeaderSection> {
                 ),
                 const SizedBox(width: 10.0),
                 const AppText(
-                    text: 'Pranav Dave', color: Colors.black, fontSize: 20.0)
+                    letterSpacing: 1.0,
+                    text: 'Pranav Dave',
+                    color: AppColors.primaryPurple,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400)
               ],
             ),
             Row(
               children: [
                 InkWell(
                   onTap: widget.about,
-                  child: Text('About me'),
+                  child: const AppText(
+                    text: 'About me',
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 1.0,
+                  ),
                 ),
                 const SizedBox(width: 50.0),
                 InkWell(
                   onTap: widget.skill,
-                  child: Text('Skills'),
+                  child: const AppText(
+                    text: 'Skills',
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 1.0,
+                  ),
                 ),
                 const SizedBox(width: 50.0),
                 InkWell(
                   onTap: widget.projects,
-                  child: Text('Projects'),
+                  child: const AppText(
+                    text: 'Projects',
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 1.0,
+                  ),
                 ),
               ],
             )
