@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pranavdave/projects/const.dart';
 import 'package:pranavdave/utils/colors.dart';
+import 'package:pranavdave/utils/urlLauncher.dart';
 
 import '../utils/responsive.dart';
 import '../widgets/appText.dart';
@@ -59,7 +61,9 @@ class Intro extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    UrlLauncher.launchURL(AppConst.linkedinUrl);
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryPurple,
                       minimumSize: const Size(100, 40),
@@ -114,7 +118,9 @@ class Intro extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              UrlLauncher.launchURL(AppConst.linkedinUrl);
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryPurple,
                 minimumSize: const Size(100, 40),

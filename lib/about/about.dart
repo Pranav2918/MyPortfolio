@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pranavdave/projects/const.dart';
 import 'package:pranavdave/utils/strings.dart';
 
 import '../utils/colors.dart';
 import '../utils/responsive.dart';
+import '../utils/urlLauncher.dart';
 import '../widgets/appText.dart';
 
 class About extends StatefulWidget {
@@ -67,16 +69,37 @@ class _AboutState extends State<About> {
                 fontSize: 15,
                 textAlign: TextAlign.justify,
               ),
-              const SizedBox(height: 50.0),
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryPurple,
-                      minimumSize: const Size(100, 40),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0))),
-                  child: const AppText(
-                      text: 'Github', color: Colors.white, fontSize: 15)),
+              const SizedBox(height: 40.0),
+              Row(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        UrlLauncher.launchURL(
+                            "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk");
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryPurple,
+                          minimumSize: const Size(100, 40),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0))),
+                      child: const AppText(
+                          text: 'Resume', color: Colors.white, fontSize: 15)),
+                  const SizedBox(width: 15.0),
+                  ElevatedButton(
+                      onPressed: () {
+                        UrlLauncher.launchURL(AppConst.stackoverflow);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryPurple,
+                          minimumSize: const Size(100, 40),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0))),
+                      child: const AppText(
+                          text: 'Stack overflow',
+                          color: Colors.white,
+                          fontSize: 15)),
+                ],
+              ),
             ],
           ),
         ),
@@ -116,19 +139,35 @@ class _AboutState extends State<About> {
             ),
             const SizedBox(height: 50.0),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      UrlLauncher.launchURL(
+                          "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk");
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryPurple,
                         minimumSize: const Size(100, 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0))),
                     child: const AppText(
-                        text: 'Github', color: Colors.white, fontSize: 15)),
+                        text: 'Resume', color: Colors.white, fontSize: 15)),
+                const SizedBox(width: 15.0),
+                ElevatedButton(
+                    onPressed: () {
+                      UrlLauncher.launchURL(AppConst.stackoverflow);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryPurple,
+                        minimumSize: const Size(100, 40),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0))),
+                    child: const AppText(
+                        text: 'Stack overflow',
+                        color: Colors.white,
+                        fontSize: 15)),
               ],
-            )
+            ),
           ],
         ),
         const SizedBox(height: 20.0),

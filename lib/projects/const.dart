@@ -15,6 +15,11 @@ class AppConst {
       "Spotify clone is UI trial of well known application spotify. In this application I tried to follow color code and animation of original spotify app.";
   static const solarSystemDesc =
       "Solar system is an app which have info of our solar system in such way that user can be impressd with animation and UX. I have used many animations in this application.";
+
+  static const linkedinUrl =
+      "https://www.linkedin.com/in/pranav-dave-3a56931ba";
+  static const stackoverflow =
+      "https://stackoverflow.com/users/16584937/pranav-dave";
 }
 
 class GithubConst {

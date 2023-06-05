@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/projects/projectModel.dart';
 import 'package:pranavdave/utils/colors.dart';
+import 'package:pranavdave/utils/urlLauncher.dart';
 import 'package:pranavdave/widgets/appText.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../utils/responsive.dart';
 
@@ -69,7 +69,7 @@ class Projects extends StatelessWidget {
                     elevation: 3.0,
                     backgroundColor: Colors.brown,
                     onPressed: () {
-                      _launchURL(githubLink);
+                      UrlLauncher.launchURL(githubLink);
                     },
                     child: const Center(
                         child: Icon(Icons.code, color: Colors.white)),
@@ -232,13 +232,5 @@ class Projects extends StatelessWidget {
         )
       ],
     );
-  }
-
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
