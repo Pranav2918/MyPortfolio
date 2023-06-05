@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pranavdave/projects/projectModel.dart';
 import 'package:pranavdave/utils/colors.dart';
 import 'package:pranavdave/widgets/appText.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../utils/responsive.dart';
 
@@ -67,7 +68,9 @@ class Projects extends StatelessWidget {
                   child: FloatingActionButton(
                     elevation: 3.0,
                     backgroundColor: Colors.brown,
-                    onPressed: () {},
+                    onPressed: () {
+                      _launchURL(githubLink);
+                    },
                     child: const Center(
                         child: Icon(Icons.code, color: Colors.white)),
                   ),
@@ -130,47 +133,7 @@ class Projects extends StatelessWidget {
             projectList[5].gitHub!, context),
         _projectCard(projectList[6].title, projectList[6].description,
             projectList[6].gitHub!, context),
-        Container(
-          height: 50,
-          color: AppColors.primaryPurple.withOpacity(0.5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              SizedBox(width: 8.0),
-              Icon(
-                Icons.call,
-                size: 20.0,
-                color: Colors.white,
-              ),
-              SizedBox(width: 10.0),
-              Expanded(
-                child: AppText(
-                  text: '+91 7016156637',
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.0,
-                ),
-              ),
-              Icon(
-                Icons.email_outlined,
-                size: 20.0,
-                color: Colors.white,
-              ),
-              SizedBox(width: 10.0),
-              Expanded(
-                child: AppText(
-                  text: 'pranav.18.dave@gmail.com',
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1.0,
-                ),
-              ),
-              SizedBox(width: 8.0),
-            ],
-          ),
-        )
+        _mobileFooter(context)
       ],
     );
   }
@@ -210,6 +173,50 @@ class Projects extends StatelessWidget {
     );
   }
 
+  Widget _mobileFooter(BuildContext context) {
+    return Container(
+      height: 50,
+      color: AppColors.primaryPurple.withOpacity(0.5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          SizedBox(width: 8.0),
+          Icon(
+            Icons.call,
+            size: 20.0,
+            color: Colors.white,
+          ),
+          SizedBox(width: 10.0),
+          Expanded(
+            child: AppText(
+              text: '+91 7016156637',
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 1.0,
+            ),
+          ),
+          Icon(
+            Icons.email_outlined,
+            size: 20.0,
+            color: Colors.white,
+          ),
+          SizedBox(width: 10.0),
+          Expanded(
+            child: AppText(
+              text: 'pranav.18.dave@gmail.com',
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 1.0,
+            ),
+          ),
+          SizedBox(width: 8.0),
+        ],
+      ),
+    );
+  }
+
   //Show footer option
   Widget _renderFooterWidget(Widget icon, String title) {
     return Row(
@@ -225,5 +232,13 @@ class Projects extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Future<void> _launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
