@@ -17,6 +17,9 @@ class HeaderSection extends StatefulWidget {
 }
 
 class _HeaderSectionState extends State<HeaderSection> {
+  bool isAboutHovered = false;
+  bool isSkillsHovered = false;
+  bool isProjectsHovered = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -51,10 +54,16 @@ class _HeaderSectionState extends State<HeaderSection> {
           Row(
             children: [
               InkWell(
+                onHover: (value) {
+                  setState(() {
+                    isAboutHovered = value;
+                  });
+                },
                 onTap: widget.about,
-                child: const AppText(
+                child: AppText(
                   text: 'About me',
-                  color: Colors.black,
+                  color:
+                      isAboutHovered ? AppColors.primaryPurple : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
                   letterSpacing: 1.0,
@@ -62,10 +71,16 @@ class _HeaderSectionState extends State<HeaderSection> {
               ),
               const SizedBox(width: 50.0),
               InkWell(
+                onHover: (value) {
+                  setState(() {
+                    isSkillsHovered = value;
+                  });
+                },
                 onTap: widget.skill,
-                child: const AppText(
+                child: AppText(
                   text: 'Skills',
-                  color: Colors.black,
+                  color:
+                      isSkillsHovered ? AppColors.primaryPurple : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
                   letterSpacing: 1.0,
@@ -73,10 +88,17 @@ class _HeaderSectionState extends State<HeaderSection> {
               ),
               const SizedBox(width: 50.0),
               InkWell(
+                onHover: (value) {
+                  setState(() {
+                    isProjectsHovered = value;
+                  });
+                },
                 onTap: widget.projects,
-                child: const AppText(
+                child: AppText(
                   text: 'Projects',
-                  color: Colors.black,
+                  color: isProjectsHovered
+                      ? AppColors.primaryPurple
+                      : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
                   letterSpacing: 1.0,

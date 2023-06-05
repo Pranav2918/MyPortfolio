@@ -1,3 +1,5 @@
+import 'package:pranavdave/projects/const.dart';
+
 class ProjectModel {
   final String title;
   final String description;
@@ -13,13 +15,30 @@ class ProjectModel {
 }
 
 final List<ProjectModel> projectList = [
-  ProjectModel(title: 'Coupinos', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Piatto', description: 'Piatto Desc'),
-  ProjectModel(title: 'Chitti', description: 'Chitti Desc'),
-  ProjectModel(title: 'Pokedex', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Tic-tac-toe', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Designs sea', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Travel UI', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Solar System', description: 'Coupinos Desc'),
-  ProjectModel(title: 'Spotify UI', description: 'Coupinos Desc'),
+  ProjectModel(title: 'Coupinos', description: AppConst.coupinoDesc),
+  ProjectModel(title: 'Piatto', description: AppConst.piattoDesc),
+  ProjectModel(
+      title: 'Chitti',
+      description: AppConst.chittiDesc,
+      gitHub: GithubConst.chitti),
+  ProjectModel(
+      title: 'Pokedex',
+      description: AppConst.pokedexDesc,
+      gitHub: GithubConst.pokedex),
+  ProjectModel(
+      title: 'Tic-tac-toe',
+      description: AppConst.tictactoeDesc,
+      gitHub: GithubConst.tictactoe),
+  ProjectModel(
+      title: 'Designs sea',
+      description: AppConst.designSeaDesc,
+      gitHub: GithubConst.designSea),
+  ProjectModel(
+      title: 'Solar System',
+      description: AppConst.solarSystemDesc,
+      gitHub: GithubConst.solarSystem),
+  ProjectModel(
+      title: 'Spotify UI',
+      description: AppConst.spotifyDesc,
+      gitHub: GithubConst.spotify),
 ];

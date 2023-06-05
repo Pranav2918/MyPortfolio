@@ -12,8 +12,6 @@ class Skills extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: Responsive.isDesktop(context) ? 700 : null,
-      width: size.width,
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
           horizontal: Responsive.isDesktop(context) ? 120 : 20,
@@ -49,8 +47,6 @@ class Skills extends StatelessWidget {
               : SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: GridView.builder(
-                  // shrinkWrap: true,
-                  // primary: false,
                   gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
