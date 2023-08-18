@@ -38,6 +38,10 @@ final List<ProjectModel> projectList = [
       description: AppConst.solarSystemDesc,
       gitHub: GithubConst.solarSystem),
   ProjectModel(
+      title: 'Flippy',
+      description: AppConst.flippyDesc,
+      gitHub: GithubConst.flippy),
+  ProjectModel(
       title: 'Spotify UI',
       description: AppConst.spotifyDesc,
       gitHub: GithubConst.spotify),

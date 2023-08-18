@@ -15,6 +15,8 @@ class AppConst {
       "Spotify clone is UI trial of well known application spotify. In this application I tried to follow color code and animation of original spotify app.";
   static const solarSystemDesc =
       "Solar system is an app which have info of our solar system in such way that user can be impressd with animation and UX. I have used many animations in this application.";
+  static const flippyDesc =
+      "Flippy is a simple and fun Flutter web application that allows users to flip a virtual coin with just a click. Whether you're making a decision or playing a game, Flippy is here to help you make those tough coin-flip choices.";
 
   static const linkedinUrl =
       "https://www.linkedin.com/in/pranav-dave-3a56931ba";
@@ -25,6 +27,7 @@ class AppConst {
 class GithubConst {
   static const solarSystem = "https://github.com/Pranav2918/SolarSystem";
   static const pokedex = "https://github.com/Pranav2918/Pokedex";
+  static const flippy = "https://tinyurl.com/Flipppy";
   static const spotify = "https://github.com/Pranav2918/SpotifyClone";
   static const designSea = "https://github.com/Pranav2918/FlutterDesigns";
   static const chitti = "https://github.com/Pranav2918/Chitti";

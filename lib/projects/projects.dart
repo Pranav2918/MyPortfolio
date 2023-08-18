@@ -106,10 +106,16 @@ class Projects extends StatelessWidget {
                 projectList[5].gitHub!, context)
           ],
         ),
-        Align(
-          alignment: Alignment.center,
-          child: _projectCard(projectList[6].title, projectList[6].description,
-              projectList[6].gitHub!, context),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _projectCard(projectList[6].title, projectList[6].description,
+                projectList[6].gitHub!, context),
+            _projectCard(projectList[7].title, projectList[7].description,
+                projectList[7].gitHub!, context),
+            _projectCard(projectList[8].title, projectList[8].description,
+                projectList[8].gitHub!, context),
+          ],
         ),
         _webFooter(context)
       ],
