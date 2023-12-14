@@ -78,7 +78,7 @@ class _AboutState extends State<About> {
                   const SizedBox(width: 15.0),
                   Expanded(
                     child: _showUrlButtons(
-                        AppConst.animButton, Colors.blue, "Animbutton"),
+                        AppConst.animButtonPackage, Colors.blue, "Animbutton"),
                   )
                 ],
               ),
@@ -134,7 +134,7 @@ class _AboutState extends State<About> {
                 const SizedBox(width: 15.0),
                 Expanded(
                   child: _showUrlButtons(
-                      AppConst.animButton, Colors.blue, "Animbutton"),
+                      AppConst.animButtonPackage, Colors.blue, "Animbutton"),
                 )
               ],
             ),

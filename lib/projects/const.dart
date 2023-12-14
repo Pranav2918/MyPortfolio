@@ -3,20 +3,20 @@ class AppConst {
       "Coupinos is great combination of social media and coupons application. Like on insta we can publish our feed and set our profile in same way we can do it in coupinos. Also we are having coupons of restaurants and other events where we can use them.";
   static const piattoDesc =
       "Piatto is full fledge chat application which supports one to one chat, group chat, media sharing and feed uploading. All chats are secured through E2E encryption.";
-  static const chittiDesc =
-      "Chitti is personal demo project in which I have integrated Chat GPT-3 API. Where in the app user can ask any question and can have response directly from GPT3 model.";
-  static const pokedexDesc =
-      "It is demo project in which I have called complex API known as POKEAPI. In this app you can find any pokemon and get details of them.";
-  static const tictactoeDesc =
-      "It is well known game TIC-TAC-TOE in which two user can play. In this app I did not used any kind of third party plugin or anything.";
-  static const designSeaDesc =
-      "Design sea is vast collection of different types of UI which includes login UI, Homepage UI, Settings UI, Feed UI, Various types of list UI and so on. App is also have animation widgets and animated customized widgets.";
+  static const allwellDesc =
+      "Allwell is a project which can track users each and everyday's health routine. Furthermore in the application user can set reminder for his/her medicines and he/she will be reminded through notification.";
+  static const munchDesc =
+      "Munch was a very interesting projects in which user can upload picture of ordered food with the location and after that other user can directly see the post and make order from the same restaurant.";
+  static const justWalletDesc =
+      "Just wallet was the application which tracks your expense and show in visual forms such as charts and tables. Also in the app user can directly have currency converter and calculator.";
+  static const bussinessBudyDesc =
+      "Bussiness Budy was the app for bussiness who can track their revenue, expenses and other metadata via single application";
   static const spotifyDesc =
       "Spotify clone is UI trial of well known application spotify. In this application I tried to follow color code and animation of original spotify app.";
   static const solarSystemDesc =
       "Solar system is an app which have info of our solar system in such way that user can be impressd with animation and UX. I have used many animations in this application.";
-  static const flippyDesc =
-      "Flippy is a simple and fun Flutter web application that allows users to flip a virtual coin with just a click. Whether you're making a decision or playing a game, Flippy is here to help you make those tough coin-flip choices.";
+  static const animButtonDesc =
+      "Flutter animated button package: Elegant UI interactions with smooth animations, customizable styles, and seamless integration across the platforms.";
 
   static const linkedinUrl =
       "https://www.linkedin.com/in/pranav-dave-3a56931ba";
@@ -24,13 +24,13 @@ class AppConst {
       "https://stackoverflow.com/users/16584937/pranav-dave";
   static const resumeLink =
       "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk";
-  static const animButton = "https://pub.dev/packages/animbutton";
+  static const animButtonPackage = "https://pub.dev/packages/animbutton";
 }
 
 class GithubConst {
   static const solarSystem = "https://github.com/Pranav2918/SolarSystem";
   static const pokedex = "https://github.com/Pranav2918/Pokedex";
-  static const flippy = "https://tinyurl.com/Flipppy";
+  static const animButton = "https://github.com/Pranav2918/AnimButton";
   static const spotify = "https://github.com/Pranav2918/SpotifyClone";
   static const designSea = "https://github.com/Pranav2918/FlutterDesigns";
   static const chitti = "https://github.com/Pranav2918/Chitti";

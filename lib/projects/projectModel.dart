@@ -17,30 +17,19 @@ class ProjectModel {
 final List<ProjectModel> projectList = [
   ProjectModel(title: 'Coupinos', description: AppConst.coupinoDesc),
   ProjectModel(title: 'Piatto', description: AppConst.piattoDesc),
+  ProjectModel(title: 'Allwell', description: AppConst.allwellDesc),
+  ProjectModel(title: 'Munch', description: AppConst.munchDesc),
+  ProjectModel(title: 'JustWallet', description: AppConst.justWalletDesc),
   ProjectModel(
-      title: 'Chitti',
-      description: AppConst.chittiDesc,
-      gitHub: GithubConst.chitti),
+      title: 'Bussiness Budy', description: AppConst.bussinessBudyDesc),
   ProjectModel(
-      title: 'Pokedex',
-      description: AppConst.pokedexDesc,
-      gitHub: GithubConst.pokedex),
-  ProjectModel(
-      title: 'Tic-tac-toe',
-      description: AppConst.tictactoeDesc,
-      gitHub: GithubConst.tictactoe),
-  ProjectModel(
-      title: 'Designs sea',
-      description: AppConst.designSeaDesc,
-      gitHub: GithubConst.designSea),
+      title: 'Anim Button',
+      description: AppConst.animButtonDesc,
+      gitHub: GithubConst.animButton),
   ProjectModel(
       title: 'Solar System',
       description: AppConst.solarSystemDesc,
       gitHub: GithubConst.solarSystem),
-  ProjectModel(
-      title: 'Flippy',
-      description: AppConst.flippyDesc,
-      gitHub: GithubConst.flippy),
   ProjectModel(
       title: 'Spotify UI',
       description: AppConst.spotifyDesc,

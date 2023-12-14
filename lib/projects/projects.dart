@@ -84,7 +84,7 @@ class Projects extends StatelessWidget {
             _projectCard(
                 projectList[1].title, projectList[1].description, '', context),
             _projectCard(projectList[2].title, projectList[2].description,
-                projectList[2].gitHub!, context)
+                '', context)
           ],
         ),
         const SizedBox(height: 30.0),
@@ -92,11 +92,11 @@ class Projects extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             _projectCard(projectList[3].title, projectList[3].description,
-                projectList[3].gitHub!, context),
+                '', context),
             _projectCard(projectList[4].title, projectList[4].description,
-                projectList[4].gitHub!, context),
+                '', context),
             _projectCard(projectList[5].title, projectList[5].description,
-                projectList[5].gitHub!, context)
+                '', context)
           ],
         ),
         Row(
