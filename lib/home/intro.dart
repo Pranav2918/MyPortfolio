@@ -1,8 +1,36 @@
 import 'package:animbutton/animbutton.dart';
 import 'package:pranavdave/utils/imports.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({super.key});
+
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+
+    // Tween animation
+    _animation = Tween(begin: -5.0, end: 5.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    // Repeat the animation indefinitely
+    _controller.repeat(reverse: true);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,12 +98,19 @@ class Intro extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: Container(
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                    image: AssetImage("assets/images/intro.png"))),
-          ),
+          child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(0.0, _animation.value),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/intro.png"))),
+                  ),
+                );
+              }),
         )
       ],
     );
