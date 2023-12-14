@@ -1,16 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/skills/skillModel.dart';
-import 'package:pranavdave/utils/colors.dart';
-
-import '../utils/responsive.dart';
-import '../widgets/appText.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class Skills extends StatelessWidget {
   const Skills({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
@@ -45,22 +39,22 @@ class Skills extends StatelessWidget {
                   ),
                 )
               : SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: GridView.builder(
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1 / 1,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 50,
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1 / 1,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 50,
+                    ),
+                    itemCount: skills.length,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (BuildContext context, int i) {
+                      return _skillCard(context, i);
+                    },
                   ),
-                  itemCount: skills.length,
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (BuildContext context, int i) {
-                    return _skillCard(context, i);
-                  },
-                ),
-              )
+                )
         ],
       ),
     );

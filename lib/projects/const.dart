@@ -22,6 +22,9 @@ class AppConst {
       "https://www.linkedin.com/in/pranav-dave-3a56931ba";
   static const stackoverflow =
       "https://stackoverflow.com/users/16584937/pranav-dave";
+  static const resumeLink =
+      "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk";
+  static const animButton = "https://pub.dev/packages/animbutton";
 }
 
 class GithubConst {

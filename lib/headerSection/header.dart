@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/utils/colors.dart';
-import 'package:pranavdave/widgets/appText.dart';
-
-import '../utils/responsive.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class HeaderSection extends StatefulWidget {
   final Function()? home;

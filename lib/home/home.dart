@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/about/about.dart';
-import 'package:pranavdave/headerSection/header.dart';
-import 'package:pranavdave/home/intro.dart';
-import 'package:pranavdave/projects/projects.dart';
-import 'package:pranavdave/skills/skills.dart';
-import 'package:pranavdave/utils/colors.dart';
-import 'package:pranavdave/utils/responsive.dart';
-import 'package:pranavdave/widgets/divider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -61,29 +52,23 @@ class _HomeState extends State<Home> {
                     controller: controller,
                     index: index,
                     child: index == 0
-                        ? Column(
-                            children: const [Intro(), CustomDivider()],
+                        ? const Column(
+                            children: [Intro(), CustomDivider()],
                           )
                         : index == 1
-                            ? Column(
-                                children: const [About(), CustomDivider()],
+                            ? const Column(
+                                children: [About(), CustomDivider()],
                               )
                             : index == 2
-                                ? Column(
-                                    children: const [Skills(), CustomDivider()],
+                                ? const Column(
+                                    children: [Skills(), CustomDivider()],
                                   )
                                 : index == 3
-                                    ? Column(
-                                        children: const [
-                                          Projects(),
-                                          CustomDivider()
-                                        ],
+                                    ? const Column(
+                                        children: [Projects(), CustomDivider()],
                                       )
-                                    : Column(
-                                        children: const [
-                                          Intro(),
-                                          CustomDivider()
-                                        ],
+                                    : const Column(
+                                        children: [Intro(), CustomDivider()],
                                       ));
               }),
             ))
@@ -94,13 +79,7 @@ class _HomeState extends State<Home> {
         onPressed: () {
           _scrollToDesiredIndex(0);
         },
-        child: Container(
-          height: 60,
-          width: 60,
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle, color: AppColors.primaryPurple),
-          child: const Icon(Icons.keyboard_arrow_up_rounded),
-        ),
+        child: const Icon(Icons.keyboard_arrow_up_rounded),
       ),
     );
   }

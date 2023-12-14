@@ -1,4 +1,4 @@
-import 'package:pranavdave/projects/const.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class ProjectModel {
   final String title;

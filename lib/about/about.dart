@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/projects/const.dart';
-import 'package:pranavdave/utils/strings.dart';
-
-import '../utils/colors.dart';
-import '../utils/responsive.dart';
-import '../utils/urlLauncher.dart';
-import '../widgets/appText.dart';
+import 'package:animbutton/animbutton.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class About extends StatefulWidget {
   const About({
@@ -22,7 +16,7 @@ class _AboutState extends State<About> {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: Responsive.isDesktop(context) ? 450 : null,
+      height: Responsive.isDesktop(context) ? 471 : null,
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(
           horizontal: Responsive.isDesktop(context) ? 100 : 20),
@@ -50,7 +44,7 @@ class _AboutState extends State<About> {
           ),
         ),
         Expanded(
-          flex: 4,
+          flex: 5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,32 +66,20 @@ class _AboutState extends State<About> {
               const SizedBox(height: 40.0),
               Row(
                 children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        UrlLauncher.launchURL(
-                            "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk");
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryPurple,
-                          minimumSize: const Size(100, 40),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0))),
-                      child: const AppText(
-                          text: 'Resume', color: Colors.white, fontSize: 15)),
+                  Expanded(
+                    child: _showUrlButtons(
+                        AppConst.resumeLink, AppColors.primaryPurple, "Resume"),
+                  ),
                   const SizedBox(width: 15.0),
-                  ElevatedButton(
-                      onPressed: () {
-                        UrlLauncher.launchURL(AppConst.stackoverflow);
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryPurple,
-                          minimumSize: const Size(100, 40),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0))),
-                      child: const AppText(
-                          text: 'Stack overflow',
-                          color: Colors.white,
-                          fontSize: 15)),
+                  Expanded(
+                    child: _showUrlButtons(AppConst.stackoverflow,
+                        Colors.orangeAccent, "StackOverflow"),
+                  ),
+                  const SizedBox(width: 15.0),
+                  Expanded(
+                    child: _showUrlButtons(
+                        AppConst.animButton, Colors.blue, "Animbutton"),
+                  )
                 ],
               ),
             ],
@@ -140,32 +122,20 @@ class _AboutState extends State<About> {
             const SizedBox(height: 50.0),
             Row(
               children: [
-                ElevatedButton(
-                    onPressed: () {
-                      UrlLauncher.launchURL(
-                          "https://drive.google.com/file/d/1UdeFgbYuApoWuLF7jPnfIWckfZkV6lN7/view?usp=drivesdk");
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryPurple,
-                        minimumSize: const Size(100, 40),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0))),
-                    child: const AppText(
-                        text: 'Resume', color: Colors.white, fontSize: 15)),
+                Expanded(
+                  child: _showUrlButtons(
+                      AppConst.resumeLink, AppColors.primaryPurple, "Resume"),
+                ),
                 const SizedBox(width: 15.0),
-                ElevatedButton(
-                    onPressed: () {
-                      UrlLauncher.launchURL(AppConst.stackoverflow);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryPurple,
-                        minimumSize: const Size(100, 40),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0))),
-                    child: const AppText(
-                        text: 'Stack overflow',
-                        color: Colors.white,
-                        fontSize: 15)),
+                Expanded(
+                  child: _showUrlButtons(AppConst.stackoverflow,
+                      Colors.orangeAccent, "StackOverflow"),
+                ),
+                const SizedBox(width: 15.0),
+                Expanded(
+                  child: _showUrlButtons(
+                      AppConst.animButton, Colors.blue, "Animbutton"),
+                )
               ],
             ),
           ],
@@ -173,5 +143,17 @@ class _AboutState extends State<About> {
         const SizedBox(height: 20.0),
       ],
     );
+  }
+
+  Widget _showUrlButtons(String urls, Color color, String buttonText) {
+    return AnimButton(
+        label: buttonText,
+        height: 40.0,
+        width: 100.0,
+        buttonColor: color,
+        textStyle: GoogleFonts.aBeeZee(fontSize: 13, color: Colors.white),
+        onPressed: () {
+          UrlLauncher.launchURL(urls);
+        });
   }
 }

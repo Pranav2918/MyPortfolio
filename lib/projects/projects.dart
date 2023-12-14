@@ -1,17 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/projects/projectModel.dart';
-import 'package:pranavdave/utils/colors.dart';
-import 'package:pranavdave/utils/urlLauncher.dart';
-import 'package:pranavdave/widgets/appText.dart';
-
-import '../utils/responsive.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Responsive.isDesktop(context)
         ? _renderWebContent(context)
         : _renderPhoneContent(context);
@@ -183,9 +176,9 @@ class Projects extends StatelessWidget {
     return Container(
       height: 50,
       color: AppColors.primaryPurple.withOpacity(0.5),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(width: 8.0),
           Icon(
             Icons.call,

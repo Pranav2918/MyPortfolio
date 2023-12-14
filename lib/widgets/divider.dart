@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../utils/responsive.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({Key? key}) : super(key: key);

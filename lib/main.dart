@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/home/home.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
-      theme:
-          ThemeData(brightness: Brightness.light, primarySwatch: Colors.blue),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: Colors.blue,
+          useMaterial3: true),
       darkTheme: ThemeData(brightness: Brightness.light),
       title: 'Pranav Dave',
       home: const Home(),

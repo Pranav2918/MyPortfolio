@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/projects/const.dart';
-import 'package:pranavdave/utils/colors.dart';
-import 'package:pranavdave/utils/urlLauncher.dart';
-
-import '../utils/responsive.dart';
-import '../widgets/appText.dart';
+import 'package:animbutton/animbutton.dart';
+import 'package:pranavdave/utils/imports.dart';
 
 class Intro extends StatelessWidget {
   const Intro({super.key});
@@ -60,17 +55,16 @@ class Intro extends StatelessWidget {
                 letterSpacing: 1.5,
               ),
               const SizedBox(height: 20.0),
-              ElevatedButton(
+              AnimButton(
+                  label: 'LinkedIn',
+                  buttonColor: AppColors.primaryPurple,
+                  height: 40,
+                  width: 100,
+                  textStyle:
+                      GoogleFonts.aBeeZee(fontSize: 13, color: Colors.white),
                   onPressed: () {
                     UrlLauncher.launchURL(AppConst.linkedinUrl);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryPurple,
-                      minimumSize: const Size(100, 40),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0))),
-                  child: const AppText(
-                      text: 'LinkedIn', color: Colors.white, fontSize: 15))
+                  })
             ],
           ),
         ),
@@ -117,17 +111,14 @@ class Intro extends StatelessWidget {
           letterSpacing: 1.5,
         ),
         const SizedBox(height: 20.0),
-        ElevatedButton(
+        AnimButton(
+            label: 'LinkedIn',
+            buttonColor: AppColors.primaryPurple,
+            height: 40,
+            width: 120,
             onPressed: () {
               UrlLauncher.launchURL(AppConst.linkedinUrl);
-            },
-            style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryPurple,
-                minimumSize: const Size(100, 40),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0))),
-            child: const AppText(
-                text: 'LinkedIn', color: Colors.white, fontSize: 15)),
+            }),
         const SizedBox(height: 50.0),
       ],
     );
