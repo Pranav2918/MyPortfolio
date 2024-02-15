@@ -1,22 +1,31 @@
-import 'package:pranavdave/utils/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:pranavdave/common/theme.dart';
+import 'package:pranavdave/theme_provider.dart';
+import 'package:pranavdave/views/main_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: Colors.blue,
-          useMaterial3: true),
-      darkTheme: ThemeData(brightness: Brightness.light),
-      title: 'Pranav Dave',
-      home: const Home(),
+    return Consumer<ThemeModel>(
+      builder: (context, themeModel, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: themeModel.isDarkMode ? darkTheme : lightTheme,
+          home: const MainPage(),
+        );
+      },
     );
   }
 }
