@@ -7,10 +7,10 @@ class ResponsiveScreenProvider {
 
   static bool isTabScreen(BuildContext context) {
     return MediaQuery.of(context).size.width > 480 &&
-        MediaQuery.of(context).size.width < 800;
+        MediaQuery.of(context).size.width <= 820;
   }
 
   static bool isDesktopScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width >= 800;
+    return MediaQuery.of(context).size.width > 820;
   }
 }

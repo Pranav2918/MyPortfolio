@@ -30,12 +30,12 @@ class MainPageState extends State<MainPage> {
     ];
 
     return Scaffold(
-      appBar: ResponsiveScreenProvider.isDesktopScreen(context)
-          ? _lgHeaderNav()
-          : _smHeaderNav(),
-      endDrawer: ResponsiveScreenProvider.isDesktopScreen(context)
-          ? null
-          : _showDrawer(context),
+      appBar: !ResponsiveScreenProvider.isDesktopScreen(context)
+          ? _smHeaderNav()
+          : _lgHeaderNav(),
+      endDrawer: !ResponsiveScreenProvider.isDesktopScreen(context)
+          ? _showDrawer(context)
+          : null,
       body: ValueListenableBuilder<int>(
         valueListenable: selectedIndex,
         builder: (context, selIndex, child) {
@@ -175,20 +175,6 @@ class MainPageState extends State<MainPage> {
               style: Theme.of(context).textTheme.displaySmall,
             ),
           ),
-          GestureDetector(
-            onTap: (){
-              
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                "assets/images/github.png",
-                height: 40.0,
-                width: 40.0,
-                color: Colors.brown,
-              ),
-            ),
-          )
         ],
       ),
     );

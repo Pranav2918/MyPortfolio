@@ -14,6 +14,7 @@ final ThemeData lightTheme = ThemeData(
       labelLarge: GoogleFonts.poppins(fontSize: 24, color: Colors.black),
       displaySmall: GoogleFonts.poppins(fontSize: 14, color: Colors.black),
       displayMedium: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
+      bodySmall: GoogleFonts.abel(fontSize: 18, color: Colors.black)
     ));
 
 //Dark Theme
@@ -28,4 +29,5 @@ final ThemeData darkTheme = ThemeData(
     textTheme: TextTheme(
         displaySmall: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
         displayMedium: GoogleFonts.poppins(fontSize: 18, color: Colors.white),
+        bodySmall: GoogleFonts.abel(fontSize: 18, color: Colors.white),
         labelLarge: GoogleFonts.poppins(fontSize: 24, color: Colors.white)));
