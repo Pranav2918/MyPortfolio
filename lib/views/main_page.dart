@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pranavdave/common/responsive.dart';
 import 'package:pranavdave/views/about.dart';
 import 'package:pranavdave/views/connects.dart';
-import 'package:pranavdave/views/education.dart';
 import 'package:pranavdave/views/intro.dart';
 import 'package:pranavdave/views/projects.dart';
 import 'package:pranavdave/widgets/source_code_btn.dart';
@@ -25,7 +24,6 @@ class MainPageState extends State<MainPage> {
     List<Widget> screens = [
       const Intro(),
       const About(),
-      const Education(),
       const Projects(),
       const Connect()
     ];
@@ -85,22 +83,34 @@ class MainPageState extends State<MainPage> {
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(2),
-                  child: Text('Education',
-                      style: Theme.of(context).textTheme.displayMedium),
-                ),
-                TextButton(
-                  style: _headerButtonStyle(),
-                  onPressed: () => onIndexTapped(3),
                   child: Text('Projects',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
-                  onPressed: () => onIndexTapped(4),
+                  onPressed: () => onIndexTapped(3),
                   child: Text('Connect',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
-                //Add Resume button here
+                Tooltip(
+                  decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0)),
+                  message: "Download Resume",
+                  textStyle: Theme.of(context).textTheme.displaySmall,
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Resume",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                color: Colors.blueAccent,
+                                letterSpacing: 1.0,
+                                fontWeight: FontWeight.bold),
+                      )),
+                ),
                 const SizedBox(width: 25.0),
                 const SourceCodeButton(
                   width: 30.0,
@@ -144,20 +154,11 @@ class MainPageState extends State<MainPage> {
               child: Text("About",
                   style: Theme.of(context).textTheme.displayMedium)),
           SizedBox(height: screenSize.height * 0.02),
+         
           TextButton(
               onPressed: () {
                 Navigator.pop(context);
                 onIndexTapped(2);
-              },
-              child: Text(
-                "Education",
-                style: Theme.of(context).textTheme.displayMedium,
-              )),
-          SizedBox(height: screenSize.height * 0.02),
-          TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-                onIndexTapped(3);
               },
               child: Text(
                 "Projects",
@@ -167,7 +168,7 @@ class MainPageState extends State<MainPage> {
           TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                onIndexTapped(4);
+                onIndexTapped(3);
               },
               child: Text(
                 "Connect",

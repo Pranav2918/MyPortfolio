@@ -22,7 +22,7 @@ class TextWithImage extends StatelessWidget {
         SelectableText(
           text,
           style:
-              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 15),
+              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 18),
           maxLines: 2,
         )
       ],
