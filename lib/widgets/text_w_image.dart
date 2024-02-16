@@ -19,7 +19,12 @@ class TextWithImage extends StatelessWidget {
               const ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
         ),
         const SizedBox(width: 15.0),
-        Text(text, style: Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 15), maxLines: 2,)
+        SelectableText(
+          text,
+          style:
+              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 15),
+          maxLines: 2,
+        )
       ],
     );
   }

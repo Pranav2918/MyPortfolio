@@ -10,7 +10,7 @@ class ChangingText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
+        SelectableText(
           "I'm",
           style: Theme.of(context)
               .textTheme

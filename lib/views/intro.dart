@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:pranavdave/common/responsive.dart';
 import 'package:pranavdave/widgets/animated_text.dart';
@@ -132,7 +131,7 @@ class Intro extends StatelessWidget {
   Widget _showIntroText(var screenSize, BuildContext context) {
     return Column(
       children: [
-        Text(
+        SelectableText(
           "Hello There..... I'm",
           style: Theme.of(context)
               .textTheme
@@ -140,7 +139,7 @@ class Intro extends StatelessWidget {
               .copyWith(color: Colors.grey, fontSize: 26),
         ),
         SizedBox(height: screenSize.height * 0.02),
-        Text(
+        SelectableText(
           "PRANAV DAVE",
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
               letterSpacing: 1.0,

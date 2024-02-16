@@ -5,6 +5,7 @@ import 'package:pranavdave/views/connects.dart';
 import 'package:pranavdave/views/education.dart';
 import 'package:pranavdave/views/intro.dart';
 import 'package:pranavdave/views/projects.dart';
+import 'package:pranavdave/widgets/source_code_btn.dart';
 import 'package:provider/provider.dart';
 
 import '../theme_provider.dart';
@@ -68,7 +69,7 @@ class MainPageState extends State<MainPage> {
                 onTap: () {
                   onIndexTapped(0);
                 },
-                child: Text('Pranav Dave',
+                child: SelectableText('Pranav Dave',
                     style: Theme.of(context).textTheme.labelLarge),
               ),
             ),
@@ -78,30 +79,35 @@ class MainPageState extends State<MainPage> {
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(1),
-                  child: Text('About',
+                  child: SelectableText('About',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(2),
-                  child: Text('Education',
+                  child: SelectableText('Education',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(3),
-                  child: Text('Projects',
+                  child: SelectableText('Projects',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(4),
-                  child: Text('Connect',
+                  child: SelectableText('Connect',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 //Add Resume button here
+                const SizedBox(width: 25.0),
+                const SourceCodeButton(
+                  width: 30.0,
+                  height: 30.0,
+                )
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -116,7 +122,7 @@ class MainPageState extends State<MainPage> {
           onIndexTapped(0);
         },
         child:
-            Text('Pranav Dave', style: Theme.of(context).textTheme.labelLarge),
+            SelectableText('Pranav Dave', style: Theme.of(context).textTheme.labelLarge),
       ),
     );
   }
@@ -135,7 +141,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(1);
               },
-              child: Text("About",
+              child: SelectableText("About",
                   style: Theme.of(context).textTheme.displayMedium)),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
@@ -143,7 +149,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(2);
               },
-              child: Text(
+              child: SelectableText(
                 "Education",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
@@ -153,7 +159,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(3);
               },
-              child: Text(
+              child: SelectableText(
                 "Projects",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
@@ -163,18 +169,14 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(4);
               },
-              child: Text(
+              child: SelectableText(
                 "Connect",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
           const Expanded(child: SizedBox()),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(
-              "© 2024 Pranav Dave. All rights reserved.",
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-          ),
+          const Padding(
+              padding: EdgeInsets.only(bottom: 50.0),
+              child: SourceCodeButton(height: 55.0, width: 55.0))
         ],
       ),
     );
