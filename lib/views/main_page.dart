@@ -18,7 +18,7 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(0);
+  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(1);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class MainPageState extends State<MainPage> {
                 onTap: () {
                   onIndexTapped(0);
                 },
-                child: SelectableText('Pranav Dave',
+                child: Text('Pranav Dave',
                     style: Theme.of(context).textTheme.labelLarge),
               ),
             ),
@@ -79,25 +79,25 @@ class MainPageState extends State<MainPage> {
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(1),
-                  child: SelectableText('About',
+                  child: Text('About',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(2),
-                  child: SelectableText('Education',
+                  child: Text('Education',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(3),
-                  child: SelectableText('Projects',
+                  child: Text('Projects',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(4),
-                  child: SelectableText('Connect',
+                  child: Text('Connect',
                       style: Theme.of(context).textTheme.displayMedium),
                 ),
                 //Add Resume button here
@@ -122,7 +122,7 @@ class MainPageState extends State<MainPage> {
           onIndexTapped(0);
         },
         child:
-            SelectableText('Pranav Dave', style: Theme.of(context).textTheme.labelLarge),
+            Text('Pranav Dave', style: Theme.of(context).textTheme.labelLarge),
       ),
     );
   }
@@ -141,7 +141,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(1);
               },
-              child: SelectableText("About",
+              child: Text("About",
                   style: Theme.of(context).textTheme.displayMedium)),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
@@ -149,7 +149,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(2);
               },
-              child: SelectableText(
+              child: Text(
                 "Education",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
@@ -159,7 +159,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(3);
               },
-              child: SelectableText(
+              child: Text(
                 "Projects",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
@@ -169,7 +169,7 @@ class MainPageState extends State<MainPage> {
                 Navigator.pop(context);
                 onIndexTapped(4);
               },
-              child: SelectableText(
+              child: Text(
                 "Connect",
                 style: Theme.of(context).textTheme.displayMedium,
               )),
