@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(1);
+  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(3);
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +173,19 @@ class MainPageState extends State<MainPage> {
               child: Text(
                 "Connect",
                 style: Theme.of(context).textTheme.displayMedium,
+              )),
+          SizedBox(height: screenSize.height * 0.02),
+          TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                onIndexTapped(3);
+              },
+              child: Text(
+                "Resume",
+                style: Theme.of(context)
+                    .textTheme
+                    .displayMedium!
+                    .copyWith(color: Colors.blueAccent),
               )),
           const Expanded(child: SizedBox()),
           const Padding(
