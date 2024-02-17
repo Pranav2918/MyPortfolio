@@ -3,8 +3,34 @@ import 'package:pranavdave/common/responsive.dart';
 import 'package:pranavdave/widgets/animated_text.dart';
 import 'package:pranavdave/widgets/text_w_image.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({super.key});
+
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: 1.0, end: 1.2)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +94,19 @@ class Intro extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(right: screenSize.width * 0.08),
-            child: Image.asset(
+            child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: _animation.value,
+                  child: child,
+                );
+              },
+              child: Image.asset(
               "assets/images/profile.png",
               height: 300.0,
               width: 300.0,
+            ),
             ),
           )
         ]);
@@ -86,16 +121,25 @@ class Intro extends StatelessWidget {
         children: [
           SizedBox(height: screenSize.height * 0.05),
           Center(
-            child: Image.asset(
+            child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: _animation.value,
+                  child: child,
+                );
+              },
+              child: Image.asset(
               "assets/images/profile.png",
-              height: 300.0,
-              width: 300.0,
+                height: 200.0,
+                width: 200.0,
+              ),
             ),
           ),
           SizedBox(height: screenSize.height * 0.03),
           _showIntroText(screenSize, context),
           //Changing Texts
-          const ChangingText(),
+          // const ChangingText(),
           SizedBox(height: screenSize.height * 0.08),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
