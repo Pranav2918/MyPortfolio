@@ -41,206 +41,217 @@ class Connect extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.02,
           ),
-          Column(
-            children: [
-              !ResponsiveScreenProvider.isDesktopScreen(context)
-                  ? Column(
-                      children: [
-                        _connectCards(
-                            context: context,
-                            connectString: "pranav.18.dave@gmail.com",
-                            connectSymbol: "assets/images/mail.svg",
-                            connectType: "Mail",
-                            onTap: () async {
-                              try {
-                                await launchURL(
-                                    'mailto:pranav.18.dave@gmail.com');
-                              } catch (e) {
-                                debugPrint('Error launching URL: $e');
-                              }
-                            }),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        _connectCards(
-                            context: context,
-                            connectString: "+91-7016156637",
-                            connectSymbol: "assets/images/phone.svg",
-                            connectType: "Phone",
-                            onTap: () {}),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        _connectCards(
-                            context: context,
-                            connectString: "in/pranav-dave",
-                            connectSymbol: "assets/images/linkedin.svg",
-                            connectType: "LinkedIn",
-                            onTap: () async {
-                              try {
-                                await launchURL(
-                                    'https://www.linkedin.com/in/pranav-dave-3a56931ba/');
-                              } catch (e) {
-                                debugPrint('Error launching URL: $e');
-                              }
-                            }),
-                        _connectCards(
-                            context: context,
-                            connectString: "Pranav2918",
-                            connectSymbol: "assets/images/github.svg",
-                            connectType: "Github",
-                            onTap: () async {
-                              try {
-                                await launchURL(
-                                    'https://github.com/Pranav2918');
-                              } catch (e) {
-                                debugPrint('Error launching URL: $e');
-                              }
-                            }),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        _connectCards(
-                            context: context,
-                            connectString: "pranav-dave",
-                            connectSymbol: "assets/images/stack_of.svg",
-                            connectType: "Stack Overflow",
-                            onTap: () async {
-                              try {
-                                await launchURL(
-                                    'https://stackoverflow.com/users/16584937/pranav-dave');
-                              } catch (e) {
-                                debugPrint('Error launching URL: $e');
-                              }
-                            }),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
-                        _connectCards(
-                            context: context,
-                            connectString: "pranavdave__",
-                            connectSymbol: "assets/images/insta.svg",
-                            connectType: "Instagram",
-                            onTap: () async {
-                              try {
-                                await launchURL(
-                                    'https://instagram.com/pranavdave__');
-                              } catch (e) {
-                                debugPrint('Error launching URL: $e');
-                              }
-                            }),
-                      ],
-                    )
-                  : !ResponsiveScreenProvider.isDesktopScreen(context)
-                      ? Container()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _connectCards(
-                                context: context,
-                                connectString: "pranav.18.dave@gmail.com",
-                                connectSymbol: "assets/images/mail.svg",
-                                connectType: "Mail",
-                                onTap: () async {
-                                  try {
-                                    await launchURL(
-                                        'mailto:pranav.18.dave@gmail.com');
-                                  } catch (e) {
-                                    debugPrint('Error launching URL: $e');
-                                  }
-                                }),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            _connectCards(
-                                context: context,
-                                connectString: "+91-7016156637",
-                                connectSymbol: "assets/images/phone.svg",
-                                connectType: "Phone",
-                                onTap: () {}),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            _connectCards(
-                                context: context,
-                                connectString: "in/pranav-dave",
-                                connectSymbol: "assets/images/linkedin.svg",
-                                connectType: "LinkedIn",
-                                onTap: () async {
-                                  try {
-                                    await launchURL(
-                                        'https://www.linkedin.com/in/pranav-dave-3a56931ba/');
-                                  } catch (e) {
-                                    debugPrint('Error launching URL: $e');
-                                  }
-                                }),
-                          ],
-                        ),
-              const SizedBox(
-                height: 25.0,
-              ),
-              !ResponsiveScreenProvider.isDesktopScreen(context)
-                      ? Container() : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _connectCards(
-                      context: context,
-                      connectString: "Pranav2918",
-                      connectSymbol: "assets/images/github.svg",
-                      connectType: "Github",
-                      onTap: () async {
-                        try {
-                          await launchURL('https://github.com/Pranav2918');
-                        } catch (e) {
-                          debugPrint('Error launching URL: $e');
-                        }
-                      }),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  _connectCards(
-                      context: context,
-                      connectString: "pranav-dave",
-                      connectSymbol: "assets/images/stack_of.svg",
-                      connectType: "Stack Overflow",
-                      onTap: () async {
-                        try {
-                          await launchURL(
-                              'https://stackoverflow.com/users/16584937/pranav-dave');
-                        } catch (e) {
-                          debugPrint('Error launching URL: $e');
-                        }
-                      }),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  _connectCards(
-                      context: context,
-                      connectString: "pranavdave__",
-                      connectSymbol: "assets/images/insta.svg",
-                      connectType: "Instagram",
-                      onTap: () async {
-                        try {
-                          await launchURL('https://instagram.com/pranavdave__');
-                        } catch (e) {
-                          debugPrint('Error launching URL: $e');
-                        }
-                      }),
-                ],
-              ),
-            ],
-          ),
+          !ResponsiveScreenProvider.isDesktopScreen(context)
+              ? const MDScreensConnectCards()
+              : const DesktopConnectCards()
         ],
       ),
     );
   }
+}
 
-  Widget _connectCards(
-      {required BuildContext context,
-      required String connectType,
-      required String connectString,
-      required String connectSymbol,
-      required VoidCallback onTap}) {
+//Desktop Cards
+class DesktopConnectCards extends StatelessWidget {
+  const DesktopConnectCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConnectCardWidget(
+                connectString: "pranav.18.dave@gmail.com",
+                connectSymbol: "assets/images/mail.svg",
+                connectType: "Mail",
+                onTap: () async {
+                  try {
+                    await launchURL('mailto:pranav.18.dave@gmail.com');
+                  } catch (e) {
+                    debugPrint('Error launching URL: $e');
+                  }
+                }),
+            const SizedBox(
+              width: 10.0,
+            ),
+            ConnectCardWidget(
+                connectString: "+91-7016156637",
+                connectSymbol: "assets/images/phone.svg",
+                connectType: "Phone",
+                onTap: () {}),
+            const SizedBox(
+              width: 10.0,
+            ),
+            ConnectCardWidget(
+                connectString: "in/pranav-dave",
+                connectSymbol: "assets/images/linkedin.svg",
+                connectType: "LinkedIn",
+                onTap: () async {
+                  try {
+                    await launchURL(
+                        'https://www.linkedin.com/in/pranav-dave-3a56931ba/');
+                  } catch (e) {
+                    debugPrint('Error launching URL: $e');
+                  }
+                }),
+          ],
+        ),
+        const SizedBox(
+          height: 25.0,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConnectCardWidget(
+                connectString: "Pranav2918",
+                connectSymbol: "assets/images/github.svg",
+                connectType: "Github",
+                onTap: () async {
+                  try {
+                    await launchURL('https://github.com/Pranav2918');
+                  } catch (e) {
+                    debugPrint('Error launching URL: $e');
+                  }
+                }),
+            const SizedBox(
+              width: 10.0,
+            ),
+            ConnectCardWidget(
+                connectString: "pranav-dave",
+                connectSymbol: "assets/images/stack_of.svg",
+                connectType: "Stack Overflow",
+                onTap: () async {
+                  try {
+                    await launchURL(
+                        'https://stackoverflow.com/users/16584937/pranav-dave');
+                  } catch (e) {
+                    debugPrint('Error launching URL: $e');
+                  }
+                }),
+            const SizedBox(
+              width: 10.0,
+            ),
+            ConnectCardWidget(
+                connectString: "pranavdave__",
+                connectSymbol: "assets/images/insta.svg",
+                connectType: "Instagram",
+                onTap: () async {
+                  try {
+                    await launchURL('https://instagram.com/pranavdave__');
+                  } catch (e) {
+                    debugPrint('Error launching URL: $e');
+                  }
+                }),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class MDScreensConnectCards extends StatelessWidget {
+  const MDScreensConnectCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          ConnectCardWidget(
+              connectString: "pranav.18.dave@gmail.com",
+              connectSymbol: "assets/images/mail.svg",
+              connectType: "Mail",
+              onTap: () async {
+                try {
+                  await launchURL('mailto:pranav.18.dave@gmail.com');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+              }),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ConnectCardWidget(
+              connectString: "+91-7016156637",
+              connectSymbol: "assets/images/phone.svg",
+              connectType: "Phone",
+              onTap: () {}),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ConnectCardWidget(
+              connectString: "in/pranav-dave",
+              connectSymbol: "assets/images/linkedin.svg",
+              connectType: "LinkedIn",
+              onTap: () async {
+                try {
+                  await launchURL(
+                      'https://www.linkedin.com/in/pranav-dave-3a56931ba/');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+              }),
+          ConnectCardWidget(
+              connectString: "Pranav2918",
+              connectSymbol: "assets/images/github.svg",
+              connectType: "Github",
+              onTap: () async {
+                try {
+                  await launchURL('https://github.com/Pranav2918');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+              }),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ConnectCardWidget(
+              connectString: "pranav-dave",
+              connectSymbol: "assets/images/stack_of.svg",
+              connectType: "Stack Overflow",
+              onTap: () async {
+                try {
+                  await launchURL(
+                      'https://stackoverflow.com/users/16584937/pranav-dave');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+              }),
+          const SizedBox(
+            height: 10.0,
+          ),
+          ConnectCardWidget(
+              connectString: "pranavdave__",
+              connectSymbol: "assets/images/insta.svg",
+              connectType: "Instagram",
+              onTap: () async {
+                try {
+                  await launchURL('https://instagram.com/pranavdave__');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+              }),
+        ],
+      ),
+    );
+  }
+}
+
+class ConnectCardWidget extends StatelessWidget {
+  final VoidCallback onTap;
+  final String connectSymbol;
+  final String connectType;
+  final String connectString;
+  const ConnectCardWidget(
+      {super.key,
+      required this.connectString,
+      required this.connectSymbol,
+      required this.connectType,
+      required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Card(

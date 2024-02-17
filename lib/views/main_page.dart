@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(3);
+  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
