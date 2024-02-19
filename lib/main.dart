@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/common/theme.dart';
-import 'package:pranavdave/theme_provider.dart';
-import 'package:pranavdave/views/main_page.dart';
-import 'package:provider/provider.dart';
+import 'package:pranavdave/common/imports.dart';
 
 void main() {
   runApp(

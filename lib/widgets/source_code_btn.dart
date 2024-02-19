@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:pranavdave/common/url_launcher_function.dart';
+import 'package:pranavdave/common/imports.dart';
 
 class SourceCodeButton extends StatelessWidget {
   final double height;

@@ -1,5 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/material.dart';
+import 'package:pranavdave/common/imports.dart';
 
 class ChangingText extends StatelessWidget {
   const ChangingText({super.key});
@@ -9,7 +8,6 @@ class ChangingText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        
         SelectableText(
           "I'm",
           style: Theme.of(context)
@@ -21,10 +19,8 @@ class ChangingText extends StatelessWidget {
         SizedBox(
           width: 250.0,
           child: DefaultTextStyle(
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(fontSize: 30, letterSpacing: 2.0, color: Colors.blueAccent),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: 30, letterSpacing: 2.0, color: Colors.blueAccent),
             child: AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText('Developer',

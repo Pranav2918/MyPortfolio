@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pranavdave/common/responsive.dart';
-import 'package:pranavdave/widgets/animated_text.dart';
-import 'package:pranavdave/widgets/text_w_image.dart';
+import 'package:pranavdave/common/imports.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -103,10 +100,10 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 );
               },
               child: Image.asset(
-              "assets/images/profile.png",
-              height: 300.0,
-              width: 300.0,
-            ),
+                "assets/images/profile.png",
+                height: 300.0,
+                width: 300.0,
+              ),
             ),
           )
         ]);
@@ -130,7 +127,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 );
               },
               child: Image.asset(
-              "assets/images/profile.png",
+                "assets/images/profile.png",
                 height: 200.0,
                 width: 200.0,
               ),
