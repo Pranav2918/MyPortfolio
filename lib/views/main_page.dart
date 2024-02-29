@@ -183,9 +183,15 @@ class MainPageState extends State<MainPage> {
               )),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.pop(context);
-                onIndexTapped(3);
+                try {
+                  await launchURL(
+                      'https://drive.google.com/file/d/1ZYnfyGUPLWm1xqtUzqlP_VSctBsLzijA/view?usp=drive_link');
+                } catch (e) {
+                  debugPrint('Error launching URL: $e');
+                }
+                
               },
               child: Text(
                 "Resume",
