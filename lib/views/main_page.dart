@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/common/responsive.dart';
+import 'package:pranavdave/common/url_launcher_function.dart';
 import 'package:pranavdave/views/about.dart';
 import 'package:pranavdave/views/connects.dart';
 import 'package:pranavdave/views/intro.dart';
@@ -99,7 +100,13 @@ class MainPageState extends State<MainPage> {
                   message: "Download Resume",
                   textStyle: Theme.of(context).textTheme.displaySmall,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        try {
+                          await launchURL('https://drive.google.com/file/d/1ZYnfyGUPLWm1xqtUzqlP_VSctBsLzijA/view?usp=drive_link');
+                        } catch (e) {
+                          debugPrint('Error launching URL: $e');
+                        }
+                      },
                       child: Text(
                         "Resume",
                         style: Theme.of(context)
