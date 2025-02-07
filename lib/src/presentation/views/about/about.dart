@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pranavdave/common/responsive.dart';
-import 'package:pranavdave/src/utils/const/const.dart';
+import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/const/images.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -60,7 +60,7 @@ class About extends StatelessWidget {
                               title: "Introduction",
                               context: context,
                               description: SelectableText(
-                                Constants.aboutIntroText,
+                                Strings.aboutIntroText,
                                 textAlign: TextAlign.justify,
                                 style: Theme.of(context)
                                     .textTheme
@@ -83,7 +83,7 @@ class About extends StatelessWidget {
                               title: "Introduction",
                               context: context,
                               description: SelectableText(
-                                Constants.aboutIntroText,
+                                Strings.aboutIntroText,
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayMedium!
@@ -254,7 +254,7 @@ class About extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SvgPicture.asset(
-            "assets/images/bullet.svg",
+            Images.bullet,
             colorFilter:
                 const ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
           ),
@@ -273,18 +273,18 @@ class About extends StatelessWidget {
             ? Column(
                 children: [
                   _interestPoints(
-                      "Photography", "assets/images/camera.svg", context),
+                      "Photography", Images.camera, context),
                   _interestPoints(
-                      "Web Series", "assets/images/webseries.svg", context),
-                  _interestPoints("Music", "assets/images/music.svg", context),
+                      "Web Series", Images.webSeries, context),
+                  _interestPoints("Music", Images.music, context),
                   _interestPoints(
-                      "Travel", "assets/images/travell.svg", context),
+                      "Travel", Images.travel, context),
                   _interestPoints(
-                      "Cricket", "assets/images/cricket.svg", context),
+                      "Cricket", Images.cricket, context),
                   _interestPoints(
-                      "Hiking", "assets/images/hiking.svg", context),
+                      "Hiking", Images.hiking, context),
                   _interestPoints(
-                      "Stock Analysis", "assets/images/stock.svg", context),
+                      "Stock Analysis", Images.stock, context),
                 ],
               )
             : Row(
@@ -293,13 +293,13 @@ class About extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _interestPoints(
-                          "Photography", "assets/images/camera.svg", context),
+                          "Photography", Images.camera, context),
                       _interestPoints(
-                          "Web Series", "assets/images/webseries.svg", context),
+                          "Web Series", Images.webSeries, context),
                       _interestPoints(
-                          "Music", "assets/images/music.svg", context),
+                          "Music", Images.music, context),
                       _interestPoints(
-                          "Travel", "assets/images/travell.svg", context),
+                          "Travel", Images.travel, context),
                     ],
                   ),
                   const Expanded(child: SizedBox()),
@@ -307,11 +307,11 @@ class About extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _interestPoints(
-                          "Cricket", "assets/images/cricket.svg", context),
+                          "Cricket", Images.cricket, context),
                       _interestPoints(
-                          "Hiking", "assets/images/hiking.svg", context),
+                          "Hiking", Images.hiking, context),
                       _interestPoints(
-                          "Stock Analysis", "assets/images/stock.svg", context),
+                          "Stock Analysis", Images.stock, context),
                     ],
                   ),
                   const Expanded(child: SizedBox()),
@@ -364,7 +364,7 @@ Widget _educations(BuildContext context, String year, String course) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       SvgPicture.asset(
-        "assets/images/bullet.svg",
+        Images.bullet,
         colorFilter: const ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
       ),
       Flexible(

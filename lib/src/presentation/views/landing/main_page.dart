@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:pranavdave/common/responsive.dart';
-import 'package:pranavdave/common/url_launcher_function.dart';
-import 'package:pranavdave/src/utils/const/const.dart';
-import 'package:pranavdave/views/about.dart';
-import 'package:pranavdave/views/connects.dart';
-import 'package:pranavdave/views/intro.dart';
-import 'package:pranavdave/views/projects.dart';
-import 'package:pranavdave/widgets/source_code_btn.dart';
+import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/services/launch_url.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/presentation/views/about/about.dart';
+import 'package:pranavdave/src/presentation/views/connect/connects.dart';
+import 'package:pranavdave/src/presentation/views/intro/intro.dart';
+import 'package:pranavdave/src/presentation/views/project/projects.dart';
+import 'package:pranavdave/src/presentation/widgets/source_code_btn.dart';
 import 'package:provider/provider.dart';
 
-import '../theme_provider.dart';
+import '../../../utils/theme/theme_provider.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
   @override
-  MainPageState createState() => MainPageState();
+  LandingPageState createState() => LandingPageState();
 }
 
-class MainPageState extends State<MainPage> {
+class LandingPageState extends State<LandingPage> {
   final ValueNotifier<int> selectedIndex = ValueNotifier<int>(0);
 
   @override
@@ -69,7 +69,7 @@ class MainPageState extends State<MainPage> {
                 onTap: () {
                   onIndexTapped(0);
                 },
-                child: Text(Constants.name,
+                child: Text(Strings.name,
                     style: Theme.of(context).textTheme.labelLarge),
               ),
             ),
@@ -103,7 +103,7 @@ class MainPageState extends State<MainPage> {
                   child: TextButton(
                       onPressed: () async {
                         try {
-                          await launchURL('https://drive.google.com/file/d/1ZYnfyGUPLWm1xqtUzqlP_VSctBsLzijA/view?usp=drive_link');
+                          await launchURL(Strings.resumeLink);
                         } catch (e) {
                           debugPrint('Error launching URL: $e');
                         }
@@ -140,7 +140,7 @@ class MainPageState extends State<MainPage> {
           onIndexTapped(0);
         },
         child:
-            Text(Constants.name, style: Theme.of(context).textTheme.labelLarge),
+            Text(Strings.name, style: Theme.of(context).textTheme.labelLarge),
       ),
     );
   }
@@ -162,7 +162,6 @@ class MainPageState extends State<MainPage> {
               child: Text("About",
                   style: Theme.of(context).textTheme.displayMedium)),
           SizedBox(height: screenSize.height * 0.02),
-         
           TextButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -187,12 +186,10 @@ class MainPageState extends State<MainPage> {
               onPressed: () async {
                 Navigator.pop(context);
                 try {
-                  await launchURL(
-                      'https://drive.google.com/file/d/1ZYnfyGUPLWm1xqtUzqlP_VSctBsLzijA/view?usp=drive_link');
+                  await launchURL(Strings.resumeLink);
                 } catch (e) {
                   debugPrint('Error launching URL: $e');
                 }
-                
               },
               child: Text(
                 "Resume",

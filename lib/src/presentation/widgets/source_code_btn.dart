@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pranavdave/common/url_launcher_function.dart';
+import 'package:pranavdave/src/services/launch_url.dart';
+import 'package:pranavdave/src/utils/const/images.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
 
 class SourceCodeButton extends StatelessWidget {
   final double height;
@@ -19,13 +20,13 @@ class SourceCodeButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           try {
-            await launchURL('https://github.com/Pranav2918/MyPortfolio');
+            await launchURL(Strings.portfolioLink);
           } catch (e) {
             debugPrint('Error launching URL: $e');
           }
         },
         child: SvgPicture.asset(
-          "assets/images/github.svg",
+          Images.github,
           height: height,
           width: width,
           colorFilter:

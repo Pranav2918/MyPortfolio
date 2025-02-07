@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:pranavdave/common/responsive.dart';
-import 'package:pranavdave/common/url_launcher_function.dart';
+import 'package:pranavdave/src/services/launch_url.dart';
+import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key});
@@ -17,22 +18,29 @@ class Projects extends StatelessWidget {
           projectImage: "assets/images/animbutton.jpg",
           onTap: () async {
             try {
-              await launchURL('https://pub.dev/packages/animbutton');
+              await launchURL(Strings.animButtonLink);
             } catch (e) {
               debugPrint('Error launching URL: $e');
             }
           }),
       LGScreenProjectCards(
-        projectImage: "assets/images/sod.jpg",
-        onTap: () async {
-          try {
-            await launchURL('https://github.com/Pranav2918/FlutterDesigns');
-          } catch (e) {
-            debugPrint('Error launching URL: $e');
-          }
-        },
-      )
-      // Add more cards as needed
+          projectImage: "assets/images/ticket.jpg",
+          onTap: () async {
+            try {
+              await launchURL(Strings.ticketLink);
+            } catch (e) {
+              debugPrint('Error launching URL: $e');
+            }
+          }),
+      LGScreenProjectCards(
+          projectImage: "assets/images/3t.jpg",
+          onTap: () async {
+            try {
+              await launchURL(Strings.tLink);
+            } catch (e) {
+              debugPrint('Error launching URL: $e');
+            }
+          })
     ];
 
     final List<Widget> mdCardsList = [
@@ -57,7 +65,7 @@ class Projects extends StatelessWidget {
             " Elegant UI interactions with smooth animations, customizable styles, and seamless integration across the platforms.",
         onTap: () async {
           try {
-            await launchURL('https://pub.dev/packages/animbutton');
+            await launchURL(Strings.animButtonLink);
           } catch (e) {
             debugPrint('Error launching URL: $e');
           }
@@ -65,17 +73,30 @@ class Projects extends StatelessWidget {
       ),
       MDScreenProjectCards(
         appLogo: "assets/images/flutterLogo.png",
-        name: "Sea of Designs",
+        name: "Book it",
         description:
-            "A collection that includes several Flutter designs, such as travel, social networking, and authentication designs, among others",
+            " Fully functional ticket booking UI built with flutter web. Which can be directly adapt in the app",
         onTap: () async {
           try {
-            await launchURL('https://github.com/Pranav2918/FlutterDesigns');
+            await launchURL(Strings.ticketLink);
           } catch (e) {
             debugPrint('Error launching URL: $e');
           }
         },
       ),
+      MDScreenProjectCards(
+        appLogo: "assets/images/flutterLogo.png",
+        name: "Tic tac toe",
+        description:
+            " A cool 2D game for quick fun and play with minimal UI and responsive functions",
+        onTap: () async {
+          try {
+            await launchURL(Strings.tLink);
+          } catch (e) {
+            debugPrint('Error launching URL: $e');
+          }
+        },
+      )
     ];
     var screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(

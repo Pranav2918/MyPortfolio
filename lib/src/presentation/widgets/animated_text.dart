@@ -1,14 +1,15 @@
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
 
-class ChangingText extends StatelessWidget {
-  const ChangingText({super.key});
+class AnimatedTextWidget extends StatelessWidget {
+  const AnimatedTextWidget({super.key});
   final Duration textChangingDuration = const Duration(milliseconds: 100);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SelectableText(
           "I'm",
@@ -24,18 +25,12 @@ class ChangingText extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 30, letterSpacing: 2.0, color: Colors.blueAccent),
             child: AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText('Developer',
-                    speed: textChangingDuration),
-                TypewriterAnimatedText('Innovator',
-                    speed: textChangingDuration),
-                TypewriterAnimatedText('Visionary',
-                    speed: textChangingDuration),
-                TypewriterAnimatedText('Self Learner',
-                    speed: textChangingDuration),
-                TypewriterAnimatedText('Contributor',
-                    speed: textChangingDuration),
-              ],
+              animatedTexts: List.generate(
+                  Strings.keywords.length,
+                  (keyIndex) => TypewriterAnimatedText(
+                      cursor: "..",
+                      speed: Duration(milliseconds: 100),
+                      Strings.keywords[keyIndex])),
               onTap: () {},
             ),
           ),

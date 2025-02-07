@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pranavdave/common/responsive.dart';
-import 'package:pranavdave/src/utils/const/const.dart';
-import 'package:pranavdave/widgets/animated_text.dart';
-import 'package:pranavdave/widgets/text_w_image.dart';
+import 'package:pranavdave/src/presentation/views/intro/widgets/intro_text.dart';
+import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/const/images.dart';
+import 'package:pranavdave/src/presentation/widgets/text_w_image.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -19,7 +19,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 3),
       vsync: this,
     )..repeat(reverse: true);
 
@@ -53,7 +53,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Expanded(child: SizedBox()),
-                _showIntroText(screenSize, context),
+                IntroText(),
                 const Expanded(child: SizedBox()),
                 Row(
                   children: [
@@ -62,11 +62,11 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       children: [
                         const TextWithImage(
                             text: "Computer Engineer",
-                            image: "assets/images/engineer.svg"),
+                            image: Images.engineer),
                         SizedBox(height: screenSize.height * 0.02),
                         const TextWithImage(
                             text: "Flutter Developer",
-                            image: "assets/images/flutter.svg"),
+                            image: Images.flutter),
                       ],
                     ),
                     const SizedBox(
@@ -77,18 +77,15 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       children: [
                         const TextWithImage(
                             text: "Traveller",
-                            image: "assets/images/travell.svg"),
+                            image: Images.travel),
                         SizedBox(height: screenSize.height * 0.02),
                         const TextWithImage(
                             text: "Community Contributor",
-                            image: "assets/images/community.svg"),
+                            image: Images.contributor),
                       ],
                     )
                   ],
                 ),
-                const Expanded(child: SizedBox()),
-                //Changing Texts
-                const ChangingText(),
                 const Expanded(child: SizedBox()),
               ],
             ),
@@ -104,7 +101,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 );
               },
               child: Image.asset(
-                "assets/images/profile.png",
+                Images.profileImage,
                 height: 300.0,
                 width: 300.0,
               ),
@@ -131,16 +128,14 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 );
               },
               child: Image.asset(
-                "assets/images/profile.png",
+                Images.profileImage,
                 height: 200.0,
                 width: 200.0,
               ),
             ),
           ),
           SizedBox(height: screenSize.height * 0.03),
-          _showIntroText(screenSize, context),
-          //Changing Texts
-          // const ChangingText(),
+          IntroText(),
           SizedBox(height: screenSize.height * 0.08),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -150,18 +145,18 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 children: [
                   const TextWithImage(
                       text: "Computer Engineer",
-                      image: "assets/images/engineer.svg"),
+                      image: Images.engineer),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
                       text: "Flutter Developer",
-                      image: "assets/images/flutter.svg"),
+                      image: Images.flutter),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
-                      text: "Traveller", image: "assets/images/travell.svg"),
+                      text: "Traveller", image: Images.travel),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
                       text: "Community Contributor",
-                      image: "assets/images/community.svg"),
+                      image: Images.contributor),
                 ],
               ),
             ],
@@ -169,30 +164,6 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
           SizedBox(height: screenSize.height * 0.08),
         ],
       ),
-    );
-  }
-
-  //Intro Text
-  Widget _showIntroText(var screenSize, BuildContext context) {
-    return Column(
-      children: [
-        SelectableText(
-          Constants.introText,
-          style: Theme.of(context)
-              .textTheme
-              .displayMedium!
-              .copyWith(color: Colors.grey, fontSize: 26),
-        ),
-        SizedBox(height: screenSize.height * 0.02),
-        SelectableText(
-          Constants.name.toUpperCase(),
-          style: Theme.of(context).textTheme.displayMedium!.copyWith(
-              letterSpacing: 1.0,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: Colors.blueAccent),
-        ),
-      ],
     );
   }
 }

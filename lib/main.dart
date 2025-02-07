@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pranavdave/common/theme.dart';
-import 'package:pranavdave/src/utils/const/const.dart';
-import 'package:pranavdave/theme_provider.dart';
-import 'package:pranavdave/views/main_page.dart';
+import 'package:pranavdave/src/utils/theme/theme.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/utils/theme/theme_provider.dart';
+import 'package:pranavdave/src/presentation/views/landing/main_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       builder: (context, themeModel, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: Constants.name,
+          title: Strings.name,
           theme: themeModel.isDarkMode ? darkTheme : lightTheme,
-          home: const MainPage(),
+          home: const LandingPage(),
         );
       },
     );
