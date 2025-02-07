@@ -1,4 +1,8 @@
-import 'package:pranavdave/common/imports.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pranavdave/common/responsive.dart';
+import 'package:pranavdave/src/utils/const/const.dart';
 
 class About extends StatelessWidget {
   const About({super.key});

@@ -1,4 +1,8 @@
-import 'package:pranavdave/common/imports.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:pranavdave/common/responsive.dart';
+import 'package:pranavdave/common/url_launcher_function.dart';
 
 class Connect extends StatelessWidget {
   const Connect({super.key});

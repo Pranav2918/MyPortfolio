@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/common/responsive.dart';
 import 'package:pranavdave/common/url_launcher_function.dart';
+import 'package:pranavdave/src/utils/const/const.dart';
 import 'package:pranavdave/views/about.dart';
 import 'package:pranavdave/views/connects.dart';
 import 'package:pranavdave/views/intro.dart';
@@ -68,7 +69,7 @@ class MainPageState extends State<MainPage> {
                 onTap: () {
                   onIndexTapped(0);
                 },
-                child: Text('Pranav Dave',
+                child: Text(Constants.name,
                     style: Theme.of(context).textTheme.labelLarge),
               ),
             ),
@@ -139,7 +140,7 @@ class MainPageState extends State<MainPage> {
           onIndexTapped(0);
         },
         child:
-            Text('Pranav Dave', style: Theme.of(context).textTheme.labelLarge),
+            Text(Constants.name, style: Theme.of(context).textTheme.labelLarge),
       ),
     );
   }

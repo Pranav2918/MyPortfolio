@@ -1,4 +1,5 @@
-import 'package:pranavdave/common/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class TextWithImage extends StatelessWidget {
   final String text;

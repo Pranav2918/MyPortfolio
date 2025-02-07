@@ -1,4 +1,6 @@
-import 'package:pranavdave/common/imports.dart';
+
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/material.dart';
 
 class ChangingText extends StatelessWidget {
   const ChangingText({super.key});

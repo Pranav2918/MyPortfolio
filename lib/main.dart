@@ -1,4 +1,9 @@
-import 'package:pranavdave/common/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:pranavdave/common/theme.dart';
+import 'package:pranavdave/src/utils/const/const.dart';
+import 'package:pranavdave/theme_provider.dart';
+import 'package:pranavdave/views/main_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
@@ -17,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeModel, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Pranav Dave',
+          title: Constants.name,
           theme: themeModel.isDarkMode ? darkTheme : lightTheme,
           home: const MainPage(),
         );

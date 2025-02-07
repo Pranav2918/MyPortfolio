@@ -1,6 +1,8 @@
-import 'package:pranavdave/common/imports.dart';
 
 //Light Theme
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   useMaterial3: true,

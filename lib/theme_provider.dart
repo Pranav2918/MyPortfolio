@@ -1,4 +1,4 @@
-import 'package:pranavdave/common/imports.dart';
+import 'package:flutter/material.dart';
 
 class ThemeModel with ChangeNotifier {
   bool _isDarkMode = true;

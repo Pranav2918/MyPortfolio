@@ -1,4 +1,8 @@
-import 'package:pranavdave/common/imports.dart';
+import 'package:flutter/material.dart';
+import 'package:pranavdave/common/responsive.dart';
+import 'package:pranavdave/src/utils/const/const.dart';
+import 'package:pranavdave/widgets/animated_text.dart';
+import 'package:pranavdave/widgets/text_w_image.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -173,7 +177,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
     return Column(
       children: [
         SelectableText(
-          "Hello There..... I'm",
+          Constants.introText,
           style: Theme.of(context)
               .textTheme
               .displayMedium!
@@ -181,7 +185,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
         ),
         SizedBox(height: screenSize.height * 0.02),
         SelectableText(
-          "PRANAV DAVE",
+          Constants.name.toUpperCase(),
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
               letterSpacing: 1.0,
               fontSize: 36,
