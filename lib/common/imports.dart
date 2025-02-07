@@ -7,7 +7,6 @@ export 'package:pranavdave/common/responsive.dart';
 export 'package:pranavdave/common/url_launcher_function.dart';
 export 'package:pranavdave/widgets/animated_text.dart';
 export 'package:pranavdave/widgets/text_w_image.dart';
-export 'package:carousel_slider/carousel_slider.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:pranavdave/common/theme.dart';
 export 'package:pranavdave/theme_provider.dart';

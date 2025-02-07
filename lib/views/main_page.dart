@@ -213,7 +213,7 @@ class MainPageState extends State<MainPage> {
   ButtonStyle _headerButtonStyle() {
     return ButtonStyle(
       overlayColor:
-          MaterialStateProperty.resolveWith((states) => Colors.transparent),
+          WidgetStateProperty.resolveWith((states) => Colors.transparent),
     );
   }
 }
