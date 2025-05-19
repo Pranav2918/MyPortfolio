@@ -14,7 +14,7 @@ class Strings {
 
   //LINKS
   static const resumeLink =
-      'https://drive.google.com/file/d/1ZYnfyGUPLWm1xqtUzqlP_VSctBsLzijA/view?usp=drive_link';
+      'https://drive.google.com/file/d/1RjT8hZGU5AttHOApYJcsRu14Ivzcis6Z/view';
   static const githubLink = 'https://github.com/Pranav2918?tab=repositories';
   static const linkedInLink =
       'https://www.linkedin.com/in/pranav-dave-3a56931ba/';
