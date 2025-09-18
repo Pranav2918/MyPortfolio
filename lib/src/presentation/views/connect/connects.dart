@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pranavdave/src/data/connect_data.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 
 class Connect extends StatelessWidget {
   const Connect({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
 
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(height: screenSize.height * 0.05),
+          SizedBox(height: Sizer.screenHeight * 0.05),
           SelectableText(
             'CONNECT',
             style: Theme.of(context).textTheme.displayLarge!.copyWith(
@@ -34,7 +34,7 @@ class Connect extends StatelessWidget {
                   letterSpacing: isDesktop ? 1.0 : null,
                 ),
           ),
-          SizedBox(height: screenSize.height * 0.02),
+          SizedBox(height: Sizer.screenHeight * 0.02),
           isDesktop
               ? const LargeScreenConnectCards()
               : const MediumScreenConnectCards(),

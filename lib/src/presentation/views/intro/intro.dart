@@ -3,6 +3,7 @@ import 'package:pranavdave/src/presentation/views/intro/widgets/intro_text.dart'
 import 'package:pranavdave/src/presentation/widgets/text_w_image.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
 import 'package:pranavdave/src/utils/const/images.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -36,16 +37,15 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
 
     return isDesktop
-        ? _introPageForLGScreen(screenSize)
-        : _introPageForMDScreens(screenSize);
+        ? _introPageForLGScreen()
+        : _introPageForMDScreens();
   }
 
   /// Intro section for large screens (Desktop, Landscape Tablets)
-  Widget _introPageForLGScreen(Size screenSize) => Row(
+  Widget _introPageForLGScreen() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
@@ -63,7 +63,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                         {'text': 'Computer Engineer', 'image': Images.engineer},
                         {'text': 'Flutter Developer', 'image': Images.flutter},
                       ],
-                      spacing: screenSize.height * 0.02,
+                      spacing: Sizer.screenHeight * 0.02,
                     ),
                     const SizedBox(width: 20.0),
                     _IntroRoles(
@@ -74,7 +74,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                           'image': Images.contributor,
                         },
                       ],
-                      spacing: screenSize.height * 0.02,
+                      spacing: Sizer.screenHeight * 0.02,
                     ),
                   ],
                 ),
@@ -83,7 +83,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: screenSize.width * 0.08),
+            padding: EdgeInsets.only(right: Sizer.screenWidth * 0.08),
             child: _AnimatedProfileImage(
               animation: _animation,
               size: 260.0,
@@ -93,20 +93,20 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
       );
 
   /// Intro section for small/medium screens (Mobiles, Tablets)
-  Widget _introPageForMDScreens(Size screenSize) => SingleChildScrollView(
+  Widget _introPageForMDScreens() => SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: screenSize.height * 0.08),
+            SizedBox(height: Sizer.screenHeight * 0.08),
             Center(
               child: _AnimatedProfileImage(
                 animation: _animation,
                 size: 200.0,
               ),
             ),
-            SizedBox(height: screenSize.height * 0.03),
+            SizedBox(height: Sizer.screenHeight * 0.03),
             const IntroText(),
-            SizedBox(height: screenSize.height * 0.08),
+            SizedBox(height: Sizer.screenHeight * 0.08),
             _IntroRoles(
               roles: const [
                 {'text': 'Computer Engineer', 'image': Images.engineer},
@@ -114,9 +114,9 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 {'text': 'Traveller', 'image': Images.travel},
                 {'text': 'Community Contributor', 'image': Images.contributor},
               ],
-              spacing: screenSize.height * 0.03,
+              spacing: Sizer.screenHeight * 0.03,
             ),
-            SizedBox(height: screenSize.height * 0.08),
+            SizedBox(height: Sizer.screenHeight * 0.08),
           ],
         ),
       );

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 
 class IntroText extends StatelessWidget {
   const IntroText({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
-    return Column(
+  Widget build(BuildContext context) => Column(
       children: [
         SelectableText(
           Strings.introText,
@@ -17,7 +15,7 @@ class IntroText extends StatelessWidget {
             fontSize: 26,
           ),
         ),
-        SizedBox(height: screenSize.height * 0.02),
+        SizedBox(height: Sizer.screenHeight * 0.02),
         SelectableText(
           Strings.name.toUpperCase(),
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
@@ -29,5 +27,4 @@ class IntroText extends StatelessWidget {
         ),
       ],
     );
-  }
 }

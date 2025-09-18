@@ -3,20 +3,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
 import 'package:pranavdave/src/utils/const/images.dart';
 import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
 
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(height: screenSize.height * 0.05),
+          SizedBox(height: Sizer.hPercent(5)),
           Center(
             child: Column(
               children: [
@@ -40,9 +40,7 @@ class About extends StatelessWidget {
                 ),
                 _responsiveSection(
                   isDesktop: isDesktop,
-                  screenSize: screenSize,
                   left: _aboutCards(
-                    screenSize: screenSize,
                     title: 'Introduction',
                     context: context,
                     description: SelectableText(
@@ -59,14 +57,11 @@ class About extends StatelessWidget {
                     context: context,
                     description: _skillDescriptionWidget(context, isDesktop),
                     title: 'Skills and Expertise',
-                    screenSize: screenSize,
                   ),
                 ),
                 _responsiveSection(
                   isDesktop: isDesktop,
-                  screenSize: screenSize,
                   left: _aboutCards(
-                    screenSize: screenSize,
                     title: 'Interests',
                     context: context,
                     description: _interestDescription(context, isDesktop),
@@ -75,7 +70,6 @@ class About extends StatelessWidget {
                     context: context,
                     description: _educationDescription(context),
                     title: 'Education',
-                    screenSize: screenSize,
                   ),
                 ),
               ],
@@ -88,7 +82,6 @@ class About extends StatelessWidget {
 
   Widget _responsiveSection({
     required bool isDesktop,
-    required Size screenSize,
     required Widget left,
     required Widget right,
   }) => Padding(
@@ -106,18 +99,17 @@ class About extends StatelessWidget {
     required String title,
     required Widget description,
     required BuildContext context,
-    required Size screenSize,
   }) {
     final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
 
     return Card(
       child: SizedBox(
-        height: isDesktop ? screenSize.height / 2.0 : null,
-        width: screenSize.width > 965
-            ? screenSize.width / 2.1
+        height: isDesktop ? Sizer.height / 2.0 : null,
+        width: Sizer.width > 965
+            ? Sizer.width / 2.1
             : isDesktop
-                ? screenSize.width / 2.2
-                : screenSize.width,
+                ? Sizer.width / 2.2
+                : Sizer.width,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: SingleChildScrollView(

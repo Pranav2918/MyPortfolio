@@ -8,6 +8,7 @@ import 'package:pranavdave/src/services/launch_url.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
 import 'package:pranavdave/src/utils/const/images.dart';
 import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 import 'package:pranavdave/src/utils/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -166,9 +167,7 @@ class LandingPageState extends State<LandingPage> {
       );
 
   //Drawer
-  Drawer _showDrawer(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    return Drawer(
+  Drawer _showDrawer(BuildContext context) => Drawer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -183,7 +182,7 @@ class LandingPageState extends State<LandingPage> {
               style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
-          SizedBox(height: screenSize.height * 0.02),
+          SizedBox(height: Sizer.screenHeight * 0.02),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
@@ -194,7 +193,7 @@ class LandingPageState extends State<LandingPage> {
               style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
-          SizedBox(height: screenSize.height * 0.02),
+          SizedBox(height: Sizer.screenHeight * 0.02),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
@@ -205,7 +204,7 @@ class LandingPageState extends State<LandingPage> {
               style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
-          SizedBox(height: screenSize.height * 0.02),
+          SizedBox(height: Sizer.screenHeight * 0.02),
           TextButton(
             onPressed: () async {
               Navigator.pop(context);
@@ -231,7 +230,6 @@ class LandingPageState extends State<LandingPage> {
         ],
       ),
     );
-  }
 
   //Button Style
   ButtonStyle _headerButtonStyle() => ButtonStyle(

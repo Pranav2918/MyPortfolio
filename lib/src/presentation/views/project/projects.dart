@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:pranavdave/src/data/projects_data.dart';
 import 'package:pranavdave/src/services/launch_url.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/sizer.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    return SingleChildScrollView(
+  Widget build(BuildContext context) => SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
@@ -18,7 +17,7 @@ class Projects extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: screenSize.height * 0.05,
+                  height: Sizer.screenHeight * 0.05,
                 ),
                 SelectableText(
                   'PROJECTS',
@@ -59,9 +58,7 @@ class Projects extends StatelessWidget {
                           ),
                         ),
                   options: CarouselOptions(
-                    height: !ResponsiveScreenProvider.isDesktopScreen(context)
-                        ? MediaQuery.of(context).size.height * 0.50
-                        : MediaQuery.of(context).size.height * 0.50,
+                    height: Sizer.screenHeight * 0.50,
                     enlargeCenterPage: true,
                     viewportFraction:
                         ResponsiveScreenProvider.isDesktopScreen(context)
@@ -95,7 +92,6 @@ class Projects extends StatelessWidget {
         ],
       ),
     );
-  }
 }
 
 //Project cards for desktop, Landscape
@@ -122,7 +118,7 @@ class _LGScreenProjectCardsState extends State<LGScreenProjectCards> {
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(
                 fit: BoxFit.contain,
-                height: MediaQuery.of(context).size.height / 2,
+                height: Sizer.screenHeight / 2,
                 widget.project.projectImage,
               ),
             ),
