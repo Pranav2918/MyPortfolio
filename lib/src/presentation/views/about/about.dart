@@ -10,134 +10,73 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(
-            height: screenSize.height * 0.05,
-          ),
+          SizedBox(height: screenSize.height * 0.05),
           Center(
             child: Column(
               children: [
                 SelectableText(
                   'ABOUT',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontSize: 35.0, letterSpacing: 2.0),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontSize: 35.0,
+                        letterSpacing: 2.0,
+                      ),
                 ),
                 const SizedBox(height: 25.0),
-                !ResponsiveScreenProvider.isDesktopScreen(context)
-                    ? SelectableText(
-                        'Look at my passions, accomplishments\nand hobbies.',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(color: Colors.grey),
-                      )
-                    : SelectableText(
-                        'Look at my passions, accomplishments, and hobbies.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(color: Colors.grey, letterSpacing: 1.0),
-                      ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                      vertical:
-                          !ResponsiveScreenProvider.isDesktopScreen(context)
-                              ? 0.0
-                              : 15.0,),
-                  child: !ResponsiveScreenProvider.isDesktopScreen(context)
-                      ? Column(
-                          children: [
-                            _aboutCards(
-                              screenSize: screenSize,
-                              title: 'Introduction',
-                              context: context,
-                              description: SelectableText(
-                                Strings.aboutIntroText,
-                                textAlign: TextAlign.justify,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                        letterSpacing: 1.0, fontSize: 16.0,),
-                              ),
-                            ),
-                            _aboutCards(
-                                context: context,
-                                description: _skillDescriptionWidget(context),
-                                title: 'Skills and Expertise',
-                                screenSize: screenSize,),
-                          ],
-                        )
-                      : Row(
-                          children: [
-                            _aboutCards(
-                              screenSize: screenSize,
-                              title: 'Introduction',
-                              context: context,
-                              description: SelectableText(
-                                Strings.aboutIntroText,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                        letterSpacing: 1.0, fontSize: 16.0,),
-                              ),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            _aboutCards(
-                                context: context,
-                                description: _skillDescriptionWidget(context),
-                                title: 'Skills and Expertise',
-                                screenSize: screenSize,),
-                          ],
-                        ),
+                SelectableText(
+                  isDesktop
+                      ? 'Look at my passions, accomplishments, and hobbies.'
+                      : 'Look at my passions, accomplishments\nand hobbies.',
+                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(color: Colors.grey, letterSpacing: 1.0),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 15.0,
-                      vertical:
-                          !ResponsiveScreenProvider.isDesktopScreen(context)
-                              ? 0.0
-                              : 15.0,),
-                  child: !ResponsiveScreenProvider.isDesktopScreen(context)
-                      ? Column(
-                          children: [
-                            _aboutCards(
-                              screenSize: screenSize,
-                              title: 'Interests',
-                              context: context,
-                              description: _interestDescription(context),
-                            ),
-                            _aboutCards(
-                                context: context,
-                                description: _educationDescription(context),
-                                title: 'Education',
-                                screenSize: screenSize,),
-                          ],
-                        )
-                      : Row(
-                          children: [
-                            _aboutCards(
-                              screenSize: screenSize,
-                              title: 'Interests',
-                              context: context,
-                              description: _interestDescription(context),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            _aboutCards(
-                                context: context,
-                                description: _educationDescription(context),
-                                title: 'Education',
-                                screenSize: screenSize,),
-                          ],
-                        ),
+                _responsiveSection(
+                  isDesktop: isDesktop,
+                  screenSize: screenSize,
+                  left: _aboutCards(
+                    screenSize: screenSize,
+                    title: 'Introduction',
+                    context: context,
+                    description: SelectableText(
+                      Strings.aboutIntroText,
+                      textAlign: TextAlign.justify,
+                      style:
+                          Theme.of(context).textTheme.displayMedium!.copyWith(
+                                letterSpacing: 1.0,
+                                fontSize: 16.0,
+                              ),
+                    ),
+                  ),
+                  right: _aboutCards(
+                    context: context,
+                    description: _skillDescriptionWidget(context, isDesktop),
+                    title: 'Skills and Expertise',
+                    screenSize: screenSize,
+                  ),
+                ),
+                _responsiveSection(
+                  isDesktop: isDesktop,
+                  screenSize: screenSize,
+                  left: _aboutCards(
+                    screenSize: screenSize,
+                    title: 'Interests',
+                    context: context,
+                    description: _interestDescription(context, isDesktop),
+                  ),
+                  right: _aboutCards(
+                    context: context,
+                    description: _educationDescription(context),
+                    title: 'Education',
+                    screenSize: screenSize,
+                  ),
                 ),
               ],
             ),
@@ -147,97 +86,101 @@ class About extends StatelessWidget {
     );
   }
 
-  //About section's card widget
-  Widget _aboutCards(
-      {required String title, required Widget description, required BuildContext context, var screenSize,}) => Card(
+  Widget _responsiveSection({
+    required bool isDesktop,
+    required Size screenSize,
+    required Widget left,
+    required Widget right,
+  }) => Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 15.0,
+        vertical: isDesktop ? 15.0 : 0.0,
+      ),
+      child: isDesktop
+          ? Row(children: [left, const Expanded(child: SizedBox()), right])
+          : Column(children: [left, right]),
+    );
+
+  // About section's card widget
+  Widget _aboutCards({
+    required String title,
+    required Widget description,
+    required BuildContext context,
+    required Size screenSize,
+  }) {
+    final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
+
+    return Card(
       child: SizedBox(
-        height: !ResponsiveScreenProvider.isDesktopScreen(context)
-            ? null
-            : screenSize.height / 2.0,
+        height: isDesktop ? screenSize.height / 2.0 : null,
         width: screenSize.width > 965
             ? screenSize.width / 2.1
-            : !ResponsiveScreenProvider.isDesktopScreen(context)
-                ? screenSize.width
-                : screenSize.width / 2.2,
+            : isDesktop
+                ? screenSize.width / 2.2
+                : screenSize.width,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: !ResponsiveScreenProvider.isDesktopScreen(context)
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SelectableText(
-                      title,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontSize: 22.0,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 2.0,),
-                    ),
-                    const SizedBox(height: 25.0),
-                    description, //Widget contains various description layout
-                  ],
-                )
-              : SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SelectableText(
-                        title,
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 2.0,),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SelectableText(
+                  title,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 2.0,
                       ),
-                      const SizedBox(height: 25.0),
-                      description, //Widget contains various description layout
-                    ],
-                  ),
                 ),
+                const SizedBox(height: 25.0),
+                description,
+              ],
+            ),
+          ),
         ),
       ),
     );
+  }
 
-  //Skills
-  Widget _skillDescriptionWidget(BuildContext context) => Column(
-      children: [
-        !ResponsiveScreenProvider.isDesktopScreen(context)
-            ? Column(
-                children: [
-                  _skillPoints('Flutter Framework', context),
-                  _skillPoints('Dart Programming', context),
-                  _skillPoints('REST API Integration', context),
-                  _skillPoints('State Management', context),
-                  _skillPoints('Firebase ', context),
-                  _skillPoints('Unit Testing', context),
-                  _skillPoints('Firebase', context),
-                  _skillPoints('Teamwork', context),
-                ],
-              )
-            : Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _skillPoints('Flutter Framework', context),
-                      _skillPoints('Dart Programming', context),
-                      _skillPoints('REST API Integration', context),
-                      _skillPoints('State Management', context),
-                    ],
-                  ),
-                  const Expanded(child: SizedBox()),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _skillPoints('Firebase ', context),
-                      _skillPoints('Unit Testing', context),
-                      _skillPoints('Firebase', context),
-                      _skillPoints('Teamwork', context),
-                    ],
-                  ),
-                  const Expanded(child: SizedBox()),
-                ],
+  // Skills
+  Widget _skillDescriptionWidget(BuildContext context, bool isDesktop) {
+    final skills = [
+      'Flutter Framework',
+      'Dart Programming',
+      'REST API Integration',
+      'State Management',
+      'Firebase',
+      'Unit Testing',
+      'Teamwork',
+    ];
+
+    return isDesktop
+        ? Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: skills
+                      .take(4)
+                      .map((s) => _skillPoints(s, context))
+                      .toList(),
+                ),
               ),
-      ],
-    );
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: skills
+                      .skip(4)
+                      .map((s) => _skillPoints(s, context))
+                      .toList(),
+                ),
+              ),
+            ],
+          )
+        : Column(
+            children: skills.map((s) => _skillPoints(s, context)).toList(),
+          );
+  }
 
   Widget _skillPoints(String skill, BuildContext context) => Padding(
       padding: const EdgeInsets.all(8.0),
@@ -255,69 +198,77 @@ class About extends StatelessWidget {
       ),
     );
 
-  //Interests
-  Widget _interestDescription(BuildContext context) => Column(
-      children: [
-        !ResponsiveScreenProvider.isDesktopScreen(context)
-            ? Column(
-                children: [
-                  _interestPoints(
-                      'Photography', Images.camera, context,),
-                  _interestPoints(
-                      'Web Series', Images.webSeries, context,),
-                  _interestPoints('Music', Images.music, context),
-                  _interestPoints(
-                      'Travel', Images.travel, context,),
-                  _interestPoints(
-                      'Cricket', Images.cricket, context,),
-                  _interestPoints(
-                      'Hiking', Images.hiking, context,),
-                  _interestPoints(
-                      'Stock Analysis', Images.stock, context,),
-                ],
-              )
-            : Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _interestPoints(
-                          'Photography', Images.camera, context,),
-                      _interestPoints(
-                          'Web Series', Images.webSeries, context,),
-                      _interestPoints(
-                          'Music', Images.music, context,),
-                      _interestPoints(
-                          'Travel', Images.travel, context,),
-                    ],
-                  ),
-                  const Expanded(child: SizedBox()),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _interestPoints(
-                          'Cricket', Images.cricket, context,),
-                      _interestPoints(
-                          'Hiking', Images.hiking, context,),
-                      _interestPoints(
-                          'Stock Analysis', Images.stock, context,),
-                    ],
-                  ),
-                  const Expanded(child: SizedBox()),
-                ],
+  // Interests
+  Widget _interestDescription(BuildContext context, bool isDesktop) {
+    final interests = [
+      {'title': 'Photography', 'icon': Images.camera},
+      {'title': 'Web Series', 'icon': Images.webSeries},
+      {'title': 'Music', 'icon': Images.music},
+      {'title': 'Travel', 'icon': Images.travel},
+      {'title': 'Cricket', 'icon': Images.cricket},
+      {'title': 'Hiking', 'icon': Images.hiking},
+      {'title': 'Stock Analysis', 'icon': Images.stock},
+    ];
+
+    return isDesktop
+        ? Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: interests
+                      .take(4)
+                      .map(
+                        (e) => _interestPoints(
+                          e['title']!,
+                          e['icon']!,
+                          context,
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
-      ],
-    );
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: interests
+                      .skip(4)
+                      .map(
+                        (e) => _interestPoints(
+                          e['title']!,
+                          e['icon']!,
+                          context,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+            ],
+          )
+        : Column(
+            children: interests
+                .map(
+                  (e) => _interestPoints(
+                    e['title']!,
+                    e['icon']!,
+                    context,
+                  ),
+                )
+                .toList(),
+          );
+  }
 
   Widget _interestPoints(
-      String interest, String imageAsset, BuildContext context,) => Padding(
+    String interest,
+    String imageAsset,
+    BuildContext context,
+  ) => Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             height: 40.0,
             width: 40.0,
-            alignment: Alignment.center,
             child: SvgPicture.asset(
               imageAsset,
               fit: BoxFit.fitHeight,
@@ -326,58 +277,74 @@ class About extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 25.0),
-          Text(
-            interest,
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
+          Text(interest, style: Theme.of(context).textTheme.displayMedium),
         ],
       ),
     );
 
-  Widget _educationDescription(BuildContext context) => Column(
+  // Education
+  Widget _educationDescription(BuildContext context) => const Column(
       children: [
-        _educations(context, '09/2019 - 01/2022', 'B.E. in Computer Science'),
-        const SizedBox(height: 35.0),
-        _educations(context, '08/2016 - 10/2019', 'Diploma in Computer Science'),
+        _EducationItem(
+          year: '09/2019 - 01/2022',
+          course: 'B.E. in Computer Science',
+        ),
+        SizedBox(height: 35.0),
+        _EducationItem(
+          year: '08/2016 - 10/2019',
+          course: 'Diploma in Computer Science',
+        ),
       ],
     );
 }
 
-Widget _educations(BuildContext context, String year, String course) => Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      SvgPicture.asset(
-        Images.bullet,
-        colorFilter: const ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-      ),
-      Flexible(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(course,
+class _EducationItem extends StatelessWidget {
+  final String year;
+  final String course;
+
+  const _EducationItem({required this.year, required this.course});
+
+  @override
+  Widget build(BuildContext context) => Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SvgPicture.asset(
+          Images.bullet,
+          colorFilter:
+              const ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
+        ),
+        const SizedBox(width: 8.0),
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                course,
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
-                    .copyWith(fontWeight: FontWeight.bold),),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Text('Dr. Subhash University',
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                'Dr. Subhash University',
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
-                    .copyWith(color: Colors.blueAccent),),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Text(year,
+                    .copyWith(color: Colors.blueAccent),
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                year,
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
-                    .copyWith(color: Colors.grey),),
-          ],
+                    .copyWith(color: Colors.grey),
+              ),
+            ],
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+}
