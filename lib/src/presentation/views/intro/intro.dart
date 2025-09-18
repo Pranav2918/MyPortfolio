@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/src/presentation/views/intro/widgets/intro_text.dart';
+import 'package:pranavdave/src/presentation/widgets/text_w_image.dart';
 import 'package:pranavdave/src/utils/configs/responsive.dart';
 import 'package:pranavdave/src/utils/const/images.dart';
-import 'package:pranavdave/src/presentation/widgets/text_w_image.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -35,16 +35,14 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     return !ResponsiveScreenProvider.isDesktopScreen(context)
         ? _introPageForMDScreens(screenSize, context)
         : _introPageForLGScreen(screenSize, context);
   }
 
   //Intro section for large screens (Desktop, Landscape Tablets)
-  Widget _introPageForLGScreen(var screenSize, BuildContext context) {
-    return Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+  Widget _introPageForLGScreen(var screenSize, BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
@@ -53,7 +51,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Expanded(child: SizedBox()),
-                IntroText(),
+                const IntroText(),
                 const Expanded(child: SizedBox()),
                 Row(
                   children: [
@@ -61,12 +59,12 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TextWithImage(
-                            text: "Computer Engineer",
-                            image: Images.engineer),
+                            text: 'Computer Engineer',
+                            image: Images.engineer,),
                         SizedBox(height: screenSize.height * 0.02),
                         const TextWithImage(
-                            text: "Flutter Developer",
-                            image: Images.flutter),
+                            text: 'Flutter Developer',
+                            image: Images.flutter,),
                       ],
                     ),
                     const SizedBox(
@@ -76,14 +74,14 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TextWithImage(
-                            text: "Traveller",
-                            image: Images.travel),
+                            text: 'Traveller',
+                            image: Images.travel,),
                         SizedBox(height: screenSize.height * 0.02),
                         const TextWithImage(
-                            text: "Community Contributor",
-                            image: Images.contributor),
+                            text: 'Community Contributor',
+                            image: Images.contributor,),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 const Expanded(child: SizedBox()),
@@ -94,39 +92,32 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
             padding: EdgeInsets.only(right: screenSize.width * 0.08),
             child: AnimatedBuilder(
               animation: _animation,
-              builder: (context, child) {
-                return Transform.scale(
+              builder: (context, child) => Transform.scale(
                   scale: _animation.value,
                   child: child,
-                );
-              },
+                ),
               child: Image.asset(
                 Images.profileImage,
                 height: 300.0,
                 width: 300.0,
               ),
             ),
-          )
-        ]);
-  }
+          ),
+        ],);
 
   //Intro section for small/medium screens (Mobiles, Tablets)
-  Widget _introPageForMDScreens(var screenSize, BuildContext context) {
-    return SingleChildScrollView(
+  Widget _introPageForMDScreens(var screenSize, BuildContext context) => SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(height: screenSize.height * 0.05),
           Center(
             child: AnimatedBuilder(
               animation: _animation,
-              builder: (context, child) {
-                return Transform.scale(
+              builder: (context, child) => Transform.scale(
                   scale: _animation.value,
                   child: child,
-                );
-              },
+                ),
               child: Image.asset(
                 Images.profileImage,
                 height: 200.0,
@@ -135,7 +126,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
             ),
           ),
           SizedBox(height: screenSize.height * 0.03),
-          IntroText(),
+          const IntroText(),
           SizedBox(height: screenSize.height * 0.08),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -144,19 +135,19 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const TextWithImage(
-                      text: "Computer Engineer",
-                      image: Images.engineer),
+                      text: 'Computer Engineer',
+                      image: Images.engineer,),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
-                      text: "Flutter Developer",
-                      image: Images.flutter),
+                      text: 'Flutter Developer',
+                      image: Images.flutter,),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
-                      text: "Traveller", image: Images.travel),
+                      text: 'Traveller', image: Images.travel,),
                   SizedBox(height: screenSize.height * 0.03),
                   const TextWithImage(
-                      text: "Community Contributor",
-                      image: Images.contributor),
+                      text: 'Community Contributor',
+                      image: Images.contributor,),
                 ],
               ),
             ],
@@ -165,5 +156,4 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
         ],
       ),
     );
-  }
 }

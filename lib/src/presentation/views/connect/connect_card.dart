@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ConnectCardWidget extends StatelessWidget {
+  const ConnectCardWidget(
+      {required this.connectString, required this.connectSymbol, required this.connectType, required this.onTap, super.key,});
   final VoidCallback onTap;
   final String connectSymbol;
   final String connectType;
   final String connectString;
-  const ConnectCardWidget(
-      {super.key,
-      required this.connectString,
-      required this.connectSymbol,
-      required this.connectType,
-      required this.onTap});
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       onTap: onTap,
       child: Card(
         child: SizedBox(
@@ -28,7 +23,7 @@ class ConnectCardWidget extends StatelessWidget {
                   height: 40.0,
                   width: 40.0,
                   colorFilter: const ColorFilter.mode(
-                      Colors.blueAccent, BlendMode.srcIn)),
+                      Colors.blueAccent, BlendMode.srcIn,),),
               const SizedBox(height: 5.0),
               Text(
                 connectType,
@@ -44,11 +39,10 @@ class ConnectCardWidget extends StatelessWidget {
                     .textTheme
                     .displaySmall!
                     .copyWith(color: Colors.grey),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
-  }
 }

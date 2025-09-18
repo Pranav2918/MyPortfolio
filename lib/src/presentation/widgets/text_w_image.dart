@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TextWithImage extends StatelessWidget {
+  const TextWithImage({required this.text, required this.image, super.key});
   final String text;
   final String image;
-  const TextWithImage({super.key, required this.text, required this.image});
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
+  Widget build(BuildContext context) => Row(
       children: [
         SvgPicture.asset(
           image,
@@ -24,8 +23,7 @@ class TextWithImage extends StatelessWidget {
           style:
               Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 18),
           maxLines: 2,
-        )
+        ),
       ],
     );
-  }
 }

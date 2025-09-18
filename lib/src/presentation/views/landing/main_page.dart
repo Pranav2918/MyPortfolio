@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pranavdave/src/utils/configs/responsive.dart';
-import 'package:pranavdave/src/services/launch_url.dart';
-import 'package:pranavdave/src/utils/const/strings.dart';
 import 'package:pranavdave/src/presentation/views/about/about.dart';
 import 'package:pranavdave/src/presentation/views/connect/connects.dart';
 import 'package:pranavdave/src/presentation/views/intro/intro.dart';
 import 'package:pranavdave/src/presentation/views/project/projects.dart';
 import 'package:pranavdave/src/presentation/widgets/source_code_btn.dart';
+import 'package:pranavdave/src/services/launch_url.dart';
+import 'package:pranavdave/src/utils/configs/responsive.dart';
+import 'package:pranavdave/src/utils/const/strings.dart';
+import 'package:pranavdave/src/utils/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../../../utils/theme/theme_provider.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -23,11 +22,11 @@ class LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> screens = [
+    final List<Widget> screens = [
       const Intro(),
       const About(),
       const Projects(),
-      const Connect()
+      const Connect(),
     ];
 
     return Scaffold(
@@ -39,9 +38,7 @@ class LandingPageState extends State<LandingPage> {
           : null,
       body: ValueListenableBuilder<int>(
         valueListenable: selectedIndex,
-        builder: (context, selIndex, child) {
-          return screens[selIndex];
-        },
+        builder: (context, selIndex, child) => screens[selIndex],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.dark_mode),
@@ -57,8 +54,7 @@ class LandingPageState extends State<LandingPage> {
   }
 
   //Header Navigation for large screens
-  AppBar _lgHeaderNav() {
-    return AppBar(
+  AppBar _lgHeaderNav() => AppBar(
       titleSpacing: 0,
       title: Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
@@ -70,7 +66,7 @@ class LandingPageState extends State<LandingPage> {
                   onIndexTapped(0);
                 },
                 child: Text(Strings.name,
-                    style: Theme.of(context).textTheme.labelLarge),
+                    style: Theme.of(context).textTheme.labelLarge,),
               ),
             ),
             Row(
@@ -80,25 +76,25 @@ class LandingPageState extends State<LandingPage> {
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(1),
                   child: Text('About',
-                      style: Theme.of(context).textTheme.displayMedium),
+                      style: Theme.of(context).textTheme.displayMedium,),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(2),
                   child: Text('Projects',
-                      style: Theme.of(context).textTheme.displayMedium),
+                      style: Theme.of(context).textTheme.displayMedium,),
                 ),
                 TextButton(
                   style: _headerButtonStyle(),
                   onPressed: () => onIndexTapped(3),
                   child: Text('Connect',
-                      style: Theme.of(context).textTheme.displayMedium),
+                      style: Theme.of(context).textTheme.displayMedium,),
                 ),
                 Tooltip(
                   decoration: BoxDecoration(
                       color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10.0)),
-                  message: "Download Resume",
+                      borderRadius: BorderRadius.circular(10.0),),
+                  message: 'Download Resume',
                   textStyle: Theme.of(context).textTheme.displaySmall,
                   child: TextButton(
                       onPressed: () async {
@@ -109,32 +105,30 @@ class LandingPageState extends State<LandingPage> {
                         }
                       },
                       child: Text(
-                        "Resume",
+                        'Resume',
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
                             .copyWith(
                                 color: Colors.blueAccent,
                                 letterSpacing: 1.0,
-                                fontWeight: FontWeight.bold),
-                      )),
+                                fontWeight: FontWeight.bold,),
+                      ),),
                 ),
                 const SizedBox(width: 25.0),
                 const SourceCodeButton(
                   width: 30.0,
                   height: 30.0,
-                )
+                ),
               ],
             ),
           ],
         ),
       ),
     );
-  }
 
   //Header Navigation for small screens (Mobile, Tablet)
-  AppBar _smHeaderNav() {
-    return AppBar(
+  AppBar _smHeaderNav() => AppBar(
       title: GestureDetector(
         onTap: () {
           onIndexTapped(0);
@@ -143,14 +137,12 @@ class LandingPageState extends State<LandingPage> {
             Text(Strings.name, style: Theme.of(context).textTheme.labelLarge),
       ),
     );
-  }
 
   //Drawer
   Drawer _showDrawer(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     return Drawer(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Expanded(child: SizedBox()),
@@ -159,8 +151,8 @@ class LandingPageState extends State<LandingPage> {
                 Navigator.pop(context);
                 onIndexTapped(1);
               },
-              child: Text("About",
-                  style: Theme.of(context).textTheme.displayMedium)),
+              child: Text('About',
+                  style: Theme.of(context).textTheme.displayMedium,),),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
               onPressed: () {
@@ -168,9 +160,9 @@ class LandingPageState extends State<LandingPage> {
                 onIndexTapped(2);
               },
               child: Text(
-                "Projects",
+                'Projects',
                 style: Theme.of(context).textTheme.displayMedium,
-              )),
+              ),),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
               onPressed: () {
@@ -178,9 +170,9 @@ class LandingPageState extends State<LandingPage> {
                 onIndexTapped(3);
               },
               child: Text(
-                "Connect",
+                'Connect',
                 style: Theme.of(context).textTheme.displayMedium,
-              )),
+              ),),
           SizedBox(height: screenSize.height * 0.02),
           TextButton(
               onPressed: () async {
@@ -192,26 +184,24 @@ class LandingPageState extends State<LandingPage> {
                 }
               },
               child: Text(
-                "Resume",
+                'Resume',
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
                     .copyWith(color: Colors.blueAccent),
-              )),
+              ),),
           const Expanded(child: SizedBox()),
           const Padding(
               padding: EdgeInsets.only(bottom: 50.0),
-              child: SourceCodeButton(height: 55.0, width: 55.0))
+              child: SourceCodeButton(height: 55.0, width: 55.0),),
         ],
       ),
     );
   }
 
   //Button Style
-  ButtonStyle _headerButtonStyle() {
-    return ButtonStyle(
+  ButtonStyle _headerButtonStyle() => ButtonStyle(
       overlayColor:
           WidgetStateProperty.resolveWith((states) => Colors.transparent),
     );
-  }
 }

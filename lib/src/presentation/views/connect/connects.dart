@@ -6,15 +6,14 @@ class Connect extends StatelessWidget {
   const Connect({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
+  Widget build(BuildContext context) => SingleChildScrollView(
       child: Column(
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
           SelectableText(
-            "CONNECT",
+            'CONNECT',
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
@@ -23,7 +22,7 @@ class Connect extends StatelessWidget {
           const SizedBox(height: 25.0),
           !ResponsiveScreenProvider.isDesktopScreen(context)
               ? SelectableText(
-                  "Use social media and other communication platforms\nto get in touch with me",
+                  'Use social media and other communication platforms\nto get in touch with me',
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
@@ -31,7 +30,7 @@ class Connect extends StatelessWidget {
                       .copyWith(color: Colors.grey),
                 )
               : SelectableText(
-                  "Use social media and other communication platforms to get in touch with me.",
+                  'Use social media and other communication platforms to get in touch with me.',
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
@@ -42,11 +41,10 @@ class Connect extends StatelessWidget {
           ),
           !ResponsiveScreenProvider.isDesktopScreen(context)
               ? const MDScreensConnectCards()
-              : const DesktopConnectCards()
+              : const DesktopConnectCards(),
         ],
       ),
     );
-  }
 }
 
 //Desktop Cards
@@ -54,22 +52,18 @@ class DesktopConnectCards extends StatelessWidget {
   const DesktopConnectCards({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: connectCardLG
+  Widget build(BuildContext context) => Column(
+      children: connectCardLG,
     );
-  }
 }
 
 class MDScreensConnectCards extends StatelessWidget {
   const MDScreensConnectCards({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
+  Widget build(BuildContext context) => Center(
       child: Column(
         children: connectionOptionsMD,
       ),
     );
-  }
 }

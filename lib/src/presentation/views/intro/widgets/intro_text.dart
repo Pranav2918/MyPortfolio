@@ -23,7 +23,7 @@ class IntroText extends StatelessWidget {
               letterSpacing: 1.0,
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Colors.blueAccent),
+              color: Colors.blueAccent,),
         ),
       ],
     );

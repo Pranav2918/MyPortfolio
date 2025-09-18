@@ -11,49 +11,49 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> lgCardsList = [
       LGScreenProjectCards(
-          projectImage: "assets/images/coupinos.jpg", onTap: () {}),
+          projectImage: 'assets/images/coupinos.jpg', onTap: () {},),
       LGScreenProjectCards(
-          projectImage: "assets/images/piatto.jpg", onTap: () {}),
+          projectImage: 'assets/images/piatto.jpg', onTap: () {},),
       LGScreenProjectCards(
-          projectImage: "assets/images/animbutton.jpg",
+          projectImage: 'assets/images/animbutton.jpg',
           onTap: () async {
             try {
               await launchURL(Strings.animButtonLink);
             } catch (e) {
               debugPrint('Error launching URL: $e');
             }
-          }),
+          },),
       LGScreenProjectCards(
-          projectImage: "assets/images/ticket.jpg",
+          projectImage: 'assets/images/ticket.jpg',
           onTap: () async {
             try {
               await launchURL(Strings.ticketLink);
             } catch (e) {
               debugPrint('Error launching URL: $e');
             }
-          }),
+          },),
     ];
 
     final List<Widget> mdCardsList = [
       MDScreenProjectCards(
-        appLogo: "assets/images/coupinoLogo.png",
-        name: "Coupino",
+        appLogo: 'assets/images/coupinoLogo.png',
+        name: 'Coupino',
         description:
-            "Support the business in your direct neighbourhood and benefit from attractive vouchers and offers",
+            'Support the business in your direct neighbourhood and benefit from attractive vouchers and offers',
         onTap: () {},
       ),
       MDScreenProjectCards(
-        appLogo: "assets/images/piattoLogo.png",
-        name: "Piatto Chat",
+        appLogo: 'assets/images/piattoLogo.png',
+        name: 'Piatto Chat',
         description:
-            "An application for chat that lets users browse their friends on a map, talk, submit feeds, and interact with feeds over a place.",
+            'An application for chat that lets users browse their friends on a map, talk, submit feeds, and interact with feeds over a place.',
         onTap: () {},
       ),
       MDScreenProjectCards(
-        appLogo: "assets/images/flutterLogo.png",
-        name: "Animbutton",
+        appLogo: 'assets/images/flutterLogo.png',
+        name: 'Animbutton',
         description:
-            " Elegant UI interactions with smooth animations, customizable styles, and seamless integration across the platforms.",
+            ' Elegant UI interactions with smooth animations, customizable styles, and seamless integration across the platforms.',
         onTap: () async {
           try {
             await launchURL(Strings.animButtonLink);
@@ -63,10 +63,10 @@ class Projects extends StatelessWidget {
         },
       ),
       MDScreenProjectCards(
-        appLogo: "assets/images/flutterLogo.png",
-        name: "Book it",
+        appLogo: 'assets/images/flutterLogo.png',
+        name: 'Book it',
         description:
-            " Fully functional ticket booking UI built with flutter web. Which can be directly adapt in the app",
+            ' Fully functional ticket booking UI built with flutter web. Which can be directly adapt in the app',
         onTap: () async {
           try {
             await launchURL(Strings.ticketLink);
@@ -76,11 +76,10 @@ class Projects extends StatelessWidget {
         },
       ),
     ];
-    var screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
             child: Column(
@@ -89,7 +88,7 @@ class Projects extends StatelessWidget {
                   height: screenSize.height * 0.05,
                 ),
                 SelectableText(
-                  "PROJECTS",
+                  'PROJECTS',
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
@@ -97,7 +96,7 @@ class Projects extends StatelessWidget {
                 ),
                 !ResponsiveScreenProvider.isDesktopScreen(context)
                     ? SelectableText(
-                        "View my projects, crafted with Flutter",
+                        'View my projects, crafted with Flutter',
                         textAlign: TextAlign.center,
                         style: Theme.of(context)
                             .textTheme
@@ -105,7 +104,7 @@ class Projects extends StatelessWidget {
                             .copyWith(color: Colors.grey),
                       )
                     : SelectableText(
-                        "View my projects, crafted with Flutter",
+                        'View my projects, crafted with Flutter',
                         style: Theme.of(context)
                             .textTheme
                             .displayMedium!
@@ -120,10 +119,8 @@ class Projects extends StatelessWidget {
                     height: !ResponsiveScreenProvider.isDesktopScreen(context)
                         ? MediaQuery.of(context).size.height * 0.50
                         : MediaQuery.of(context).size.height * 0.50,
-                    scrollDirection: Axis.horizontal,
                     enlargeCenterPage: true,
                     viewportFraction: 0.6,
-                    initialPage: 0,
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 3),
                     onPageChanged: (index, reason) {
@@ -138,12 +135,12 @@ class Projects extends StatelessWidget {
                     onPressed: () async {
                       try {
                         await launchURL(
-                            'https://github.com/Pranav2918?tab=repositories');
+                            'https://github.com/Pranav2918?tab=repositories',);
                       } catch (e) {
                         debugPrint('Error launching URL: $e');
                       }
                     },
-                    child: const Text("See More on Github"))
+                    child: const Text('See More on Github'),),
               ],
             ),
           ),
@@ -155,10 +152,10 @@ class Projects extends StatelessWidget {
 
 //Project cards for desktop, Landscape
 class LGScreenProjectCards extends StatefulWidget {
+  const LGScreenProjectCards(
+      {required this.projectImage, required this.onTap, super.key,});
   final String projectImage;
   final VoidCallback onTap;
-  const LGScreenProjectCards(
-      {super.key, required this.projectImage, required this.onTap});
 
   @override
   State<LGScreenProjectCards> createState() => _LGScreenProjectCardsState();
@@ -166,10 +163,9 @@ class LGScreenProjectCards extends StatefulWidget {
 
 class _LGScreenProjectCardsState extends State<LGScreenProjectCards> {
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       overlayColor:
-          MaterialStateProperty.resolveWith((states) => Colors.transparent),
+          WidgetStateProperty.resolveWith((states) => Colors.transparent),
       onTap: widget.onTap,
       child: Card(
         child: SizedBox(
@@ -184,27 +180,21 @@ class _LGScreenProjectCardsState extends State<LGScreenProjectCards> {
         ),
       ),
     );
-  }
 }
 
 //Project cards for small devices (Tablet, Phone)
 class MDScreenProjectCards extends StatelessWidget {
+  const MDScreenProjectCards(
+      {required this.name, required this.appLogo, required this.onTap, required this.description, super.key,});
   final String name;
   final String appLogo;
   final VoidCallback onTap;
   final String description;
-  const MDScreenProjectCards(
-      {super.key,
-      required this.name,
-      required this.appLogo,
-      required this.onTap,
-      required this.description});
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       overlayColor:
-          MaterialStateProperty.resolveWith((states) => Colors.transparent),
+          WidgetStateProperty.resolveWith((states) => Colors.transparent),
       onTap: onTap,
       child: Card(
         child: SizedBox(
@@ -217,16 +207,16 @@ class MDScreenProjectCards extends StatelessWidget {
                 width: 50.0,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(appLogo), fit: BoxFit.cover),
+                        image: AssetImage(appLogo), fit: BoxFit.cover,),
                     border: Border.all(color: Colors.blueAccent),
-                    borderRadius: BorderRadius.circular(8.0)),
+                    borderRadius: BorderRadius.circular(8.0),),
               ),
               Text(
                 name,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.blueAccent,
-                    letterSpacing: 1.0),
+                    letterSpacing: 1.0,),
               ),
               const SizedBox(height: 15.0),
               Padding(
@@ -239,11 +229,10 @@ class MDScreenProjectCards extends StatelessWidget {
                       .displaySmall!
                       .copyWith(letterSpacing: 1.0, fontSize: 16),
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
-  }
 }

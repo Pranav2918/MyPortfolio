@@ -5,17 +5,16 @@ import 'package:pranavdave/src/utils/const/images.dart';
 import 'package:pranavdave/src/utils/const/strings.dart';
 
 class SourceCodeButton extends StatelessWidget {
+  const SourceCodeButton(
+      {required this.height, required this.width, super.key,});
   final double height;
   final double width;
-  const SourceCodeButton(
-      {super.key, required this.height, required this.width});
 
   @override
-  Widget build(BuildContext context) {
-    return Tooltip(
+  Widget build(BuildContext context) => Tooltip(
       decoration: BoxDecoration(
-          color: Colors.blueAccent, borderRadius: BorderRadius.circular(10.0)),
-      message: "Source Code",
+          color: Colors.blueAccent, borderRadius: BorderRadius.circular(10.0),),
+      message: 'Source Code',
       textStyle: Theme.of(context).textTheme.displaySmall,
       child: GestureDetector(
         onTap: () async {
@@ -34,5 +33,4 @@ class SourceCodeButton extends StatelessWidget {
         ),
       ),
     );
-  }
 }
