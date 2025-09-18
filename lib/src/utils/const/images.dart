@@ -22,4 +22,5 @@ class Images {
   static const stock = 'assets/images/stock.svg';
   static const ticket = 'assets/images/ticket.jpg';
   static const animButton = 'assets/images/animbutton.jpg';
+  static const dash = 'assets/icons/dash.png';
 }

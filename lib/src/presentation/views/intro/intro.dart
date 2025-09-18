@@ -86,7 +86,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
             padding: EdgeInsets.only(right: screenSize.width * 0.08),
             child: _AnimatedProfileImage(
               animation: _animation,
-              size: 300.0,
+              size: 260.0,
             ),
           ),
         ],
@@ -97,7 +97,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: screenSize.height * 0.05),
+            SizedBox(height: screenSize.height * 0.08),
             Center(
               child: _AnimatedProfileImage(
                 animation: _animation,
@@ -149,27 +149,33 @@ class _AnimatedProfileImage extends StatelessWidget {
 
 /// Roles section with [TextWithImage] list
 class _IntroRoles extends StatelessWidget {
+
   const _IntroRoles({
     required this.roles,
-    required this.spacing,
+    this.spacing = 20.0,
   });
-
   final List<Map<String, String>> roles;
   final double spacing;
 
   @override
-  Widget build(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: roles
-            .map(
-              (role) => Padding(
-                padding: EdgeInsets.only(bottom: spacing),
-                child: TextWithImage(
-                  text: role['text']!,
-                  image: role['image']!,
-                ),
-              ),
-            )
-            .toList(),
+  Widget build(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.center, // ✅ Center horizontally
+        children: [
+          Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // ✅ Align text + icons center
+            children: roles
+                .map(
+                  (role) => Padding(
+                    padding: EdgeInsets.only(bottom: spacing),
+                    child: TextWithImage(
+                      text: role['text']!,
+                      image: role['image']!,
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ],
       );
 }
