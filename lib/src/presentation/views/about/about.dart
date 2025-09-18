@@ -299,10 +299,10 @@ class About extends StatelessWidget {
 }
 
 class _EducationItem extends StatelessWidget {
-  final String year;
-  final String course;
 
   const _EducationItem({required this.year, required this.course});
+  final String year;
+  final String course;
 
   @override
   Widget build(BuildContext context) => Row(
