@@ -25,5 +25,4 @@ class Strings {
   static const animButtonLink = 'https://pub.dev/packages/animbutton';
   static const portfolioLink = 'https://github.com/Pranav2918/MyPortfolio';
   static const ticketLink = "https://bookit18.netlify.app/";
-  static const tLink = "https://3t.netlify.app/";
 }

@@ -32,15 +32,6 @@ class Projects extends StatelessWidget {
               debugPrint('Error launching URL: $e');
             }
           }),
-      LGScreenProjectCards(
-          projectImage: "assets/images/3t.jpg",
-          onTap: () async {
-            try {
-              await launchURL(Strings.tLink);
-            } catch (e) {
-              debugPrint('Error launching URL: $e');
-            }
-          })
     ];
 
     final List<Widget> mdCardsList = [
@@ -84,19 +75,6 @@ class Projects extends StatelessWidget {
           }
         },
       ),
-      MDScreenProjectCards(
-        appLogo: "assets/images/flutterLogo.png",
-        name: "Tic tac toe",
-        description:
-            " A cool 2D game for quick fun and play with minimal UI and responsive functions",
-        onTap: () async {
-          try {
-            await launchURL(Strings.tLink);
-          } catch (e) {
-            debugPrint('Error launching URL: $e');
-          }
-        },
-      )
     ];
     var screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(

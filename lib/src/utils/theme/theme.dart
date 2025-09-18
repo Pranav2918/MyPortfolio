@@ -17,7 +17,7 @@ final ThemeData lightTheme = ThemeData(
       displaySmall: GoogleFonts.poppins(fontSize: 14, color: Colors.black),
       displayMedium: GoogleFonts.poppins(fontSize: 18, color: Colors.black),
       bodySmall: GoogleFonts.abel(fontSize: 18, color: Colors.black)),
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     shape: RoundedRectangleBorder(
       side: const BorderSide(color: Colors.grey),
       borderRadius: BorderRadius.circular(10), // Set the border radius
@@ -32,7 +32,7 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
     drawerTheme: const DrawerThemeData(backgroundColor: Colors.black),
     scaffoldBackgroundColor: Colors.black,
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       shape: RoundedRectangleBorder(
         side: const BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.circular(10), // Set the border radius
