@@ -12,8 +12,8 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
+  late final AnimationController _controller;
+  late final Animation<double> _animation;
 
   @override
   void initState() {
@@ -23,8 +23,9 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
       vsync: this,
     )..repeat(reverse: true);
 
-    _animation = Tween<double>(begin: 1.0, end: 1.2)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
   }
 
   @override
@@ -36,13 +37,15 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return !ResponsiveScreenProvider.isDesktopScreen(context)
-        ? _introPageForMDScreens(screenSize, context)
-        : _introPageForLGScreen(screenSize, context);
+    final isDesktop = ResponsiveScreenProvider.isDesktopScreen(context);
+
+    return isDesktop
+        ? _introPageForLGScreen(screenSize)
+        : _introPageForMDScreens(screenSize);
   }
 
-  //Intro section for large screens (Desktop, Landscape Tablets)
-  Widget _introPageForLGScreen(var screenSize, BuildContext context) => Row(
+  /// Intro section for large screens (Desktop, Landscape Tablets)
+  Widget _introPageForLGScreen(Size screenSize) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
@@ -50,110 +53,123 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Expanded(child: SizedBox()),
+                const Spacer(),
                 const IntroText(),
-                const Expanded(child: SizedBox()),
+                const Spacer(),
                 Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextWithImage(
-                            text: 'Computer Engineer',
-                            image: Images.engineer,),
-                        SizedBox(height: screenSize.height * 0.02),
-                        const TextWithImage(
-                            text: 'Flutter Developer',
-                            image: Images.flutter,),
+                    _IntroRoles(
+                      roles: const [
+                        {'text': 'Computer Engineer', 'image': Images.engineer},
+                        {'text': 'Flutter Developer', 'image': Images.flutter},
                       ],
+                      spacing: screenSize.height * 0.02,
                     ),
-                    const SizedBox(
-                      width: 20.0,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TextWithImage(
-                            text: 'Traveller',
-                            image: Images.travel,),
-                        SizedBox(height: screenSize.height * 0.02),
-                        const TextWithImage(
-                            text: 'Community Contributor',
-                            image: Images.contributor,),
+                    const SizedBox(width: 20.0),
+                    _IntroRoles(
+                      roles: const [
+                        {'text': 'Traveller', 'image': Images.travel},
+                        {
+                          'text': 'Community Contributor',
+                          'image': Images.contributor,
+                        },
                       ],
+                      spacing: screenSize.height * 0.02,
                     ),
                   ],
                 ),
-                const Expanded(child: SizedBox()),
+                const Spacer(),
               ],
             ),
           ),
           Padding(
             padding: EdgeInsets.only(right: screenSize.width * 0.08),
-            child: AnimatedBuilder(
+            child: _AnimatedProfileImage(
               animation: _animation,
-              builder: (context, child) => Transform.scale(
-                  scale: _animation.value,
-                  child: child,
-                ),
-              child: Image.asset(
-                Images.profileImage,
-                height: 300.0,
-                width: 300.0,
-              ),
+              size: 300.0,
             ),
           ),
-        ],);
-
-  //Intro section for small/medium screens (Mobiles, Tablets)
-  Widget _introPageForMDScreens(var screenSize, BuildContext context) => SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          SizedBox(height: screenSize.height * 0.05),
-          Center(
-            child: AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) => Transform.scale(
-                  scale: _animation.value,
-                  child: child,
-                ),
-              child: Image.asset(
-                Images.profileImage,
-                height: 200.0,
-                width: 200.0,
-              ),
-            ),
-          ),
-          SizedBox(height: screenSize.height * 0.03),
-          const IntroText(),
-          SizedBox(height: screenSize.height * 0.08),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const TextWithImage(
-                      text: 'Computer Engineer',
-                      image: Images.engineer,),
-                  SizedBox(height: screenSize.height * 0.03),
-                  const TextWithImage(
-                      text: 'Flutter Developer',
-                      image: Images.flutter,),
-                  SizedBox(height: screenSize.height * 0.03),
-                  const TextWithImage(
-                      text: 'Traveller', image: Images.travel,),
-                  SizedBox(height: screenSize.height * 0.03),
-                  const TextWithImage(
-                      text: 'Community Contributor',
-                      image: Images.contributor,),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: screenSize.height * 0.08),
         ],
-      ),
-    );
+      );
+
+  /// Intro section for small/medium screens (Mobiles, Tablets)
+  Widget _introPageForMDScreens(Size screenSize) => SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(height: screenSize.height * 0.05),
+            Center(
+              child: _AnimatedProfileImage(
+                animation: _animation,
+                size: 200.0,
+              ),
+            ),
+            SizedBox(height: screenSize.height * 0.03),
+            const IntroText(),
+            SizedBox(height: screenSize.height * 0.08),
+            _IntroRoles(
+              roles: const [
+                {'text': 'Computer Engineer', 'image': Images.engineer},
+                {'text': 'Flutter Developer', 'image': Images.flutter},
+                {'text': 'Traveller', 'image': Images.travel},
+                {'text': 'Community Contributor', 'image': Images.contributor},
+              ],
+              spacing: screenSize.height * 0.03,
+            ),
+            SizedBox(height: screenSize.height * 0.08),
+          ],
+        ),
+      );
+}
+
+/// Animated profile image used in both layouts
+class _AnimatedProfileImage extends StatelessWidget {
+  const _AnimatedProfileImage({
+    required this.animation,
+    required this.size,
+  });
+
+  final Animation<double> animation;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: animation,
+        builder: (context, child) => Transform.scale(
+          scale: animation.value,
+          child: child,
+        ),
+        child: Image.asset(
+          Images.profileImage,
+          height: size,
+          width: size,
+        ),
+      );
+}
+
+/// Roles section with [TextWithImage] list
+class _IntroRoles extends StatelessWidget {
+  const _IntroRoles({
+    required this.roles,
+    required this.spacing,
+  });
+
+  final List<Map<String, String>> roles;
+  final double spacing;
+
+  @override
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: roles
+            .map(
+              (role) => Padding(
+                padding: EdgeInsets.only(bottom: spacing),
+                child: TextWithImage(
+                  text: role['text']!,
+                  image: role['image']!,
+                ),
+              ),
+            )
+            .toList(),
+      );
 }
