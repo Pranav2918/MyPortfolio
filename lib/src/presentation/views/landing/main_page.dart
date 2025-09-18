@@ -28,6 +28,7 @@ class LandingPageState extends State<LandingPage> {
       const Intro(),
       const About(),
       const Projects(),
+      const Placeholder(),
       const Connect(),
     ];
 
@@ -95,7 +96,7 @@ class LandingPageState extends State<LandingPage> {
                   ),
                   TextButton(
                     style: _headerButtonStyle(),
-                    onPressed: () => onIndexTapped(2),
+                    onPressed: () => onIndexTapped(3),
                     child: Text(
                       'Projects',
                       style: Theme.of(context).textTheme.displayMedium,
@@ -103,7 +104,15 @@ class LandingPageState extends State<LandingPage> {
                   ),
                   TextButton(
                     style: _headerButtonStyle(),
-                    onPressed: () => onIndexTapped(3),
+                    onPressed: () => onIndexTapped(2),
+                    child: Text(
+                      'Blogs',
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                  ),
+                  TextButton(
+                    style: _headerButtonStyle(),
+                    onPressed: () => onIndexTapped(4),
                     child: Text(
                       'Connect',
                       style: Theme.of(context).textTheme.displayMedium,
@@ -198,6 +207,17 @@ class LandingPageState extends State<LandingPage> {
             onPressed: () {
               Navigator.pop(context);
               onIndexTapped(3);
+            },
+            child: Text(
+              'Blogs',
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+          ),
+          SizedBox(height: Sizer.screenHeight * 0.02),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              onIndexTapped(4);
             },
             child: Text(
               'Connect',
