@@ -58,7 +58,7 @@ class Projects extends StatelessWidget {
                           ),
                         ),
                   options: CarouselOptions(
-                    height: Sizer.screenHeight * 0.50,
+                    height: ResponsiveScreenProvider.isDesktopScreen(context) ? Sizer.screenHeight * 0.50 : Sizer.screenHeight * 0.40,
                     enlargeCenterPage: true,
                     viewportFraction:
                         ResponsiveScreenProvider.isDesktopScreen(context)
