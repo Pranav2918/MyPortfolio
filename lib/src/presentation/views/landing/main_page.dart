@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pranavdave/src/presentation/views/about/about.dart';
+import 'package:pranavdave/src/presentation/views/blogs/blogs.dart';
 import 'package:pranavdave/src/presentation/views/connect/connects.dart';
 import 'package:pranavdave/src/presentation/views/intro/intro.dart';
 import 'package:pranavdave/src/presentation/views/project/projects.dart';
@@ -28,7 +29,7 @@ class LandingPageState extends State<LandingPage> {
       const Intro(),
       const About(),
       const Projects(),
-      const Placeholder(),
+      const Blogs(),
       const Connect(),
     ];
 
@@ -96,7 +97,7 @@ class LandingPageState extends State<LandingPage> {
                   ),
                   TextButton(
                     style: _headerButtonStyle(),
-                    onPressed: () => onIndexTapped(3),
+                    onPressed: () => onIndexTapped(2),
                     child: Text(
                       'Projects',
                       style: Theme.of(context).textTheme.displayMedium,
@@ -104,7 +105,7 @@ class LandingPageState extends State<LandingPage> {
                   ),
                   TextButton(
                     style: _headerButtonStyle(),
-                    onPressed: () => onIndexTapped(2),
+                    onPressed: () => onIndexTapped(3),
                     child: Text(
                       'Blogs',
                       style: Theme.of(context).textTheme.displayMedium,
