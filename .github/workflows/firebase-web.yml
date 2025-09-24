@@ -3,34 +3,49 @@ name: Flutter Web CI/CD to Firebase
 on:
   push:
     branches:
-      - main   
-  workflow_dispatch:   
+      - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout your repository
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # 2️⃣ Setup Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.32.5'  # change to your Flutter version
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # 4️⃣ Build Flutter Web
       - name: Build Flutter Web
         run: flutter build web --release
 
+      # 5️⃣ Install Firebase CLI
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
+      # 6️⃣ Deploy to Firebase Hosting using Service Account
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
+          # Save the service account JSON to a temporary file
           echo "$FIREBASE_SERVICE_ACCOUNT" > /tmp/firebase-key.json
-          firebase deploy --only hosting --project pranavdave-d9dc3 --token "$(firebase login:ci --token /tmp/firebase-key.json)"
+
+          # Tell Firebase CLI to use this service account
+          export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-key.json
+
+          # Deploy to Firebase Hosting (replace with your project ID)
+          firebase deploy --only hosting --project sdasd-d9dc3
+
+          # Clean up key after deploy
+          rm /tmp/firebase-key.json
