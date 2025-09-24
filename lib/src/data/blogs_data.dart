@@ -32,4 +32,10 @@ final List<BlogModel> blogs = <BlogModel>[
     redirectUrl:
     'https://medium.com/@pranavdave.code/how-to-build-a-scalable-flutter-app-using-clean-architecture-and-getx-5f2d02bfe794',
   ),
+  BlogModel(
+    title: 'Publish your first Dart/Flutter package on pub.dev',
+    imageUrl: 'assets/images/packages.jpg',
+    redirectUrl:
+        'https://medium.com/@pranavdave.code/publish-your-first-dart-flutter-package-on-pub-dev-6ec189f432ee',
+  ),
 ];
