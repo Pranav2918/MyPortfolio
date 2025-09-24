@@ -45,7 +45,7 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-key.json
 
           # Deploy to Firebase Hosting (replace with your project ID)
-          firebase deploy --only hosting --project sdasd-d9dc3
+          firebase deploy --only hosting --project pranavdave-d9dc3
 
           # Clean up key after deploy
           rm /tmp/firebase-key.json
