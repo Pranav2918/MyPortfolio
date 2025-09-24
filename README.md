@@ -1,6 +1,6 @@
 # 🌐 Personal Portfolio Website  
 
-[![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-orange?logo=firebase)](https://pranavdave-d9dc3.web.app/)
+[![Build & Deploy](https://img.shields.io/github/actions/workflow/status/Pranav2918/MyPortfolio/firebase-web.yml?branch=main)](https://github.com/Pranav2918/MyPortfolio/actions/workflows/firebase-web.yml) [![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-orange?logo=firebase)](https://pranavdave-d9dc3.web.app/)
 
 🚀 **Live Link:** [Visit My Portfolio](https://pranavdave-d9dc3.web.app/)  
 
